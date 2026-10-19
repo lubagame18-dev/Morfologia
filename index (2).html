@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Части речи · 7 класс · Учу по ФРП</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2a2140; --muted:#6b6185; --line:#ece4ff; --violet:#6a3df0; --pink:#ff5fa2; --yellow:#FFD23F; --teal:#2ec4b6;
+  --ok:#17a34a; --okbg:#e7f9ee; --bad:#e23b4e; --badbg:#ffecee; --bg:#fbfaff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;font-size:16px;color:var(--ink);line-height:1.5;background:var(--bg)}
+p{margin:0 0 8px}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px 80px}
+
+/* ---------- верхняя панель ---------- */
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .in{max-width:920px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:800;font-size:15px;background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.top input.name{flex:1 1 160px;min-width:140px;border:1.5px solid #e2d8ff;border-radius:10px;padding:7px 10px;font:inherit;font-size:14px}
+.prog{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);white-space:nowrap}
+.bar{width:110px;height:8px;border-radius:8px;background:#eee8ff;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--pink));transition:width .3s}
+.btn{border:0;border-radius:10px;padding:8px 14px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;background:#f1ecff;color:#4a2fc0}
+.btn:hover{filter:brightness(.97)}
+.btn.main{background:linear-gradient(120deg,var(--violet),#b04cf0 60%,var(--pink));color:#fff}
+.btn.ghost{background:transparent;color:var(--muted)}
+.nav{max-width:920px;margin:0 auto;padding:0 16px 10px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin}
+.nav button{flex:0 0 auto;border:1.5px solid #e2d8ff;background:#fff;border-radius:20px;padding:5px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink);display:flex;align-items:center;gap:6px}
+.nav button.on{background:var(--violet);border-color:var(--violet);color:#fff}
+.nav button .d{width:9px;height:9px;border-radius:50%;background:#ddd5f5}
+.nav button .d.half{background:var(--yellow)} .nav button .d.full{background:var(--ok)}
+.nav button.on .d{outline:2px solid #fff}
+
+/* ---------- баннеры ---------- */
+.banner{position:relative;overflow:hidden;border-radius:20px;padding:26px 28px 28px;color:#fff;background:linear-gradient(118deg,#5b34e8 0%,#9a46ee 48%,#ff5fa2 100%);margin:18px 0 16px}
+.banner .tag{position:relative;z-index:2;display:inline-block;background:var(--yellow);color:#3b2a00;font-weight:800;font-size:12px;letter-spacing:.07em;text-transform:uppercase;padding:5px 12px;border-radius:8px}
+.banner h1{position:relative;z-index:2;font-weight:800;font-size:clamp(26px,5vw,38px);line-height:1.08;margin:10px 0 6px}
+.banner .sub{position:relative;z-index:2;font-size:16px;opacity:.95;max-width:80%}
+.banner .c{position:absolute;border-radius:50%;z-index:1}
+.c1{width:180px;height:180px;right:-40px;top:-60px;background:rgba(255,255,255,.16)}
+.c2{width:90px;height:90px;right:110px;bottom:-30px;background:var(--yellow);opacity:.9}
+.c3{width:40px;height:40px;right:44px;bottom:30px;background:rgba(255,255,255,.35)}
+.c4{width:20px;height:20px;right:210px;top:22px;background:#7ff0e0}
+
+/* ---------- заголовки и блоки ---------- */
+.sec{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;margin:22px 0 10px}
+.sec .ic{flex:0 0 32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800}
+.ic-th{background:var(--violet)} .ic-ex{background:var(--pink)} .ic-al{background:#f2b600} .ic-pr{background:var(--teal)} .ic-ch{background:#3a86ff}
+.box{border-radius:16px;padding:14px 16px;margin:10px 0}
+.theory{background:#F4F0FF;border-left:5px solid var(--violet)}
+.example{background:#FFF1F7;border-left:5px solid var(--pink)}
+.algo{background:#FFF8DA;border-left:5px solid #f2b600}
+.warn{background:#E9FBF8;border-left:5px solid var(--teal)}
+.box .ttl{font-weight:800;margin-bottom:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.grid2>.box,.grid3>.box{margin:0}
+@media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr}.banner .sub{max-width:100%}}
+.small{font-size:14px;color:var(--muted)}
+.mini{font-size:14.5px}
+ul.clean{margin:4px 0;padding-left:20px} ul.clean li{margin-bottom:3px}
+.mark{background:linear-gradient(transparent 55%,#ffe36e 55%);padding:0 2px;font-weight:600}
+.pill{display:inline-block;background:#fff;border:1.5px solid #e2d8ff;border-radius:8px;padding:1px 8px;margin:2px;font-weight:600;font-size:14px}
+.card{background:#fff;border:1.5px solid #e4dbff;border-radius:12px;padding:8px 12px}
+
+ol.steps{list-style:none;counter-reset:s;margin:4px 0 0;padding:0}
+ol.steps li{counter-increment:s;position:relative;padding:3px 0 8px 38px;min-height:28px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:27px;height:27px;border-radius:50%;background:#f2b600;color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ar{color:#b07f00;font-weight:700}
+
+.tblw{overflow-x:auto;margin:8px 0}
+table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:15px;border-radius:12px;overflow:hidden;border:1.5px solid #e4dbff;background:#fff}
+table.tb th{background:linear-gradient(90deg,var(--violet),#b04cf0);color:#fff;text-align:left;padding:8px 10px;font-weight:700}
+table.tb td{padding:7px 10px;border-top:1px solid #ece6ff;vertical-align:middle}
+table.tb tr:nth-child(even) td{background:#faf8ff}
+
+/* цвета частей речи */
+.k{display:inline-block;padding:1px 9px;border-radius:20px;font-weight:700;font-size:13px;white-space:nowrap;margin:2px 1px}
+.k-s{background:#E8E1FF;color:#5130d6}.k-a{background:#FFE0EE;color:#d0246f}.k-n{background:#FFEBD1;color:#c25e00}.k-m{background:#D7F6F1;color:#0f8577}
+.k-v{background:#FFDCDF;color:#c51f2f}.k-pr{background:#FCE3F7;color:#a3289a}.k-dp{background:#E3F0FF;color:#2a5fb0}.k-d{background:#DCE8FF;color:#1d5de0}
+.k-p{background:#ECEEF2;color:#4e5668}.k-c{background:#EEE7E0;color:#6e5440}.k-ch{background:#F3E4EA;color:#8a4a5f}.k-i{background:#FFF3C4;color:#8a6300}
+.sent{line-height:1;margin:6px 0}
+.tk{display:inline-block;text-align:center;margin:0 2px 12px;vertical-align:bottom}
+.tk i{display:block;font-style:normal;font-size:11px;font-weight:700;margin-bottom:3px}
+.tk span{display:block;font-size:18px;font-weight:600;padding:0 2px 2px;border-bottom:3px solid}
+.t-s i{color:#5130d6}.t-s span{border-color:#7c5cff}.t-a i{color:#d0246f}.t-a span{border-color:#ff5fa2}
+.t-n i{color:#c25e00}.t-n span{border-color:#ff9f1c}.t-m i{color:#0f8577}.t-m span{border-color:#2ec4b6}
+.t-v i{color:#c51f2f}.t-v span{border-color:#e63946}.t-d i{color:#1d5de0}.t-d span{border-color:#3a86ff}
+.t-p i{color:#4e5668}.t-p span{border-color:#9aa3b5}.t-c i{color:#6e5440}.t-c span{border-color:#b08968}
+.t-ch i{color:#8a4a5f}.t-ch span{border-color:#c9849b}.t-i i{color:#8a6300}.t-i span{border-color:#f4c430}
+.t-pr i{color:#a3289a}.t-pr span{border-color:#d65bd0}.t-dp i{color:#2a5fb0}.t-dp span{border-color:#6aa6f0}
+.t-x span{border-color:transparent;font-weight:500}
+
+/* ---------- задания ---------- */
+.task{background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 16px;margin:14px 0;position:relative}
+.task.done{border-color:#bfe9cf}
+.task .tt{display:flex;gap:10px;align-items:flex-start;font-weight:700;margin-bottom:10px}
+.task .tt .num{flex:0 0 30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+.task .tt .q{padding-top:3px}
+.task .badge{position:absolute;right:14px;top:-11px;background:var(--ok);color:#fff;font-size:12px;font-weight:700;border-radius:20px;padding:2px 10px;display:none}
+.task.done .badge{display:block}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:6px 0}
+.rows2{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px}
+@media(max-width:700px){.rows2{grid-template-columns:1fr}}
+.it{padding:6px 0;border-bottom:1px dashed #eee6ff;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
+.it:last-child{border-bottom:0}
+
+select,input.f,textarea{font:inherit;font-size:15px;color:var(--ink);border:1.5px solid #d9cdfa;border-radius:10px;background:#fff;padding:5px 8px;transition:.15s}
+select{padding-right:6px;cursor:pointer;max-width:100%}
+input.f{width:150px}
+input.f.s{width:60px;text-align:center} input.f.xs{width:44px;text-align:center} input.f.l{width:230px} input.f.w{width:100%}
+textarea{width:100%;min-height:76px;resize:vertical;line-height:1.45}
+select:focus,input.f:focus,textarea:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px #e9e1ff}
+.ok{border-color:var(--ok)!important;background:var(--okbg)!important}
+.bad{border-color:var(--bad)!important;background:var(--badbg)!important}
+.empty{border-color:#f2b600!important;background:#fffaea!important}
+
+.words{display:flex;flex-wrap:wrap;gap:6px 12px}
+.wsel{display:inline-flex;align-items:center;gap:6px;background:#f8f5ff;border-radius:12px;padding:4px 6px 4px 10px;font-weight:600}
+
+/* выбор слов в тексте */
+.pick{font-size:18px;line-height:2.1}
+.pick .w{cursor:pointer;border-radius:6px;padding:1px 3px;border-bottom:2px dotted #cbbdf0;user-select:none}
+.pick .w:hover{background:#f1ecff}
+.pick .w.sel{background:#e3d9ff;border-bottom:2px solid var(--violet)}
+.pick .w.ok{background:var(--okbg)!important;border-bottom-color:var(--ok)} .pick .w.bad{background:var(--badbg)!important;border-bottom-color:var(--bad)}
+.after{display:none;margin-top:10px;padding-top:10px;border-top:2px dashed var(--line)}
+.after.show{display:block}
+.lock{font-size:14px;color:var(--muted);background:#f8f5ff;border-radius:10px;padding:6px 10px;margin-top:8px}
+
+/* текст с номерами */
+.codes{line-height:1}
+.codes .ct{display:inline-flex;flex-direction:column;align-items:center;margin:0 3px 12px;vertical-align:top}
+.codes .ct span{font-size:18px;font-style:italic;margin-bottom:3px}
+.codes .ct select{font-size:13px;padding:2px 2px;border-radius:7px;width:52px}
+
+.foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+.res{font-size:14.5px;font-weight:600}
+.res.good{color:var(--ok)} .res.mid{color:#b07f00} .res.free{color:#4a2fc0}
+.pager{display:flex;justify-content:space-between;gap:10px;margin-top:26px}
+.legend{display:flex;flex-wrap:wrap;gap:4px}
+.route{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:700px){.route{grid-template-columns:1fr}}
+.route button{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid #ece4ff;border-radius:14px;padding:10px 12px;text-align:left;font:inherit;cursor:pointer;color:var(--ink)}
+.route button:hover{border-color:var(--violet)}
+.route .n{flex:0 0 38px;height:38px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px}
+.route b{display:block} .route span.s{font-size:13px;color:var(--muted)}
+.check{display:flex;gap:10px;align-items:center;margin:6px 0}
+.check input{width:20px;height:20px;accent-color:var(--violet)}
+.basket{border-radius:12px;padding:6px 10px;border:1.5px dashed #d9cdfa;background:#faf8ff}
+.keys{columns:2;column-gap:18px;font-size:14px}
+@media(max-width:700px){.keys{columns:1}}
+.keys .kb{break-inside:avoid;margin-bottom:10px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px}
+.keys .kb b.h{color:#5130d6;display:block;margin-bottom:3px}
+.lesson{display:none}.lesson.on{display:block}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(120px);background:#2a2140;color:#fff;padding:10px 18px;border-radius:12px;font-weight:600;font-size:14px;transition:.3s;z-index:50}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.teacherbar{background:#2a2140;color:#fff;border-radius:14px;padding:12px 14px;margin:14px 0;display:none;gap:10px;flex-wrap:wrap;align-items:center}
+body.teacher .teacherbar{display:flex}
+.tonly{display:none} body.teacher .tonly{display:flex}
+dialog{border:0;border-radius:16px;padding:20px;max-width:420px;width:92%;box-shadow:0 20px 60px rgba(40,20,90,.25)}
+dialog::backdrop{background:rgba(40,20,90,.35)}
+@media print{.top,.foot,.pager,.teacherbar{display:none!important}.lesson{display:block!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="in">
+    <span class="brand">Части речи · 7 класс</span>
+    <input class="name" id="studentName" placeholder="Имя и фамилия ученицы" aria-label="Имя ученицы">
+    <div class="prog"><div class="bar"><i id="barFill"></i></div><span id="progTxt">0 из 0</span></div>
+    <button class="btn main" id="btnExport">Отправить учителю</button>
+    <button class="btn ghost" id="btnTeacher">Для учителя</button>
+  </div>
+  <nav class="nav" id="nav"></nav>
+</div>
+
+<div class="wrap">
+
+<div class="teacherbar">
+  <b>Режим учителя</b>
+  <button class="btn" id="btnImport">Открыть ответы ученицы (.json)</button>
+  <button class="btn" id="btnReset">Очистить все ответы</button>
+  <button class="btn" id="btnTeacherOff">Выйти</button>
+  <input type="file" id="fileImport" accept=".json,application/json" hidden>
+</div>
+
+<!-- ===================== СТАРТ ===================== -->
+<section class="lesson" data-id="start" data-title="Старт">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Рабочая тетрадь · 7 класс · Морфология</span>
+    <h1>Части речи:<br>узнаю с первого взгляда</h1>
+    <div class="sub">Теория, примеры, алгоритмы и практика на 8 занятий. Ответы сохраняются сами, даже если закрыть страницу.</div>
+  </div>
+
+  <div class="sec"><span class="ic ic-th">i</span>Как работать</div>
+  <div class="grid3">
+    <div class="box theory"><div class="ttl">1. Читай теорию</div>Короткие блоки, таблицы, главные признаки. Разобранные примеры показывают, как думать.</div>
+    <div class="box example"><div class="ttl">2. Выполняй задания</div>Выбирай ответ в списке, вписывай слова, нажимай на слова в тексте.</div>
+    <div class="box warn"><div class="ttl">3. Жми «Проверить»</div>Зелёное – верно, красное – подумай ещё. Письменные ответы проверит учитель.</div>
+  </div>
+  <div class="box algo">Когда закончишь занятие, нажми вверху <b>«Отправить учителю»</b>: скачается файл с твоими ответами, его нужно переслать учителю.</div>
+
+  <div class="sec"><span class="ic ic-al">→</span>Маршрут</div>
+  <div class="route" id="route"></div>
+
+  <div class="sec"><span class="ic ic-ex">●</span>Цвет каждой части речи</div>
+  <div class="legend">
+    <span class="k k-s">существительное</span><span class="k k-a">прилагательное</span><span class="k k-n">числительное</span><span class="k k-m">местоимение</span>
+    <span class="k k-v">глагол</span><span class="k k-pr">причастие</span><span class="k k-dp">деепричастие</span><span class="k k-d">наречие</span>
+    <span class="k k-p">предлог</span><span class="k k-c">союз</span><span class="k k-ch">частица</span><span class="k k-i">междометие</span>
+  </div>
+</section>
+
+<!-- ===================== ЗАНЯТИЕ 1 ===================== -->
+<section class="lesson" data-id="l1" data-title="1. Карта частей речи" data-color="#6a3df0" data-sub="что такое часть речи, как её узнать">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Занятие 1</span><h1>Карта частей речи</h1>
+    <div class="sub">Все слова русского языка делятся на группы. Узнаём, по каким приметам слово попадает в свою группу.</div></div>
+
+  <div class="sec"><span class="ic ic-th">i</span>Теория</div>
+  <div class="box theory">
+    <div class="ttl">Что такое часть речи</div>
+    <p><b>Часть речи</b> – это группа слов, у которых общее значение, одинаковые вопросы, одинаковые грамматические признаки и похожая роль в предложении.</p>
+    <p>У каждой части речи четыре «приметы»: <span class="pill">1. значение</span><span class="pill">2. вопрос</span><span class="pill">3. признаки (как изменяется)</span><span class="pill">4. роль в предложении</span>. Если хотя бы две приметы совпали, вы почти наверняка не ошиблись.</p>
+  </div>
+  <div class="grid2">
+    <div class="box theory"><div class="ttl">Самостоятельные части речи</div>
+      <p>Называют предметы, признаки, действия, количество или указывают на них. <b>Отвечают на вопросы</b> и <b>бывают членами предложения</b>.</p>
+      <div class="legend"><span class="k k-s">существительное</span><span class="k k-a">прилагательное</span><span class="k k-n">числительное</span><span class="k k-m">местоимение</span><span class="k k-v">глагол</span><span class="k k-d">наречие</span></div>
+      <p class="small" style="margin-top:6px">Причастие и деепричастие в 7 классе изучают как особые формы глагола.</p></div>
+    <div class="box theory"><div class="ttl">Служебные части речи</div>
+      <p>Ничего не называют, <b>на вопросы не отвечают</b>, <b>членами предложения не бывают</b>. Связывают слова и добавляют оттенки смысла.</p>
+      <div class="legend"><span class="k k-p">предлог</span><span class="k k-c">союз</span><span class="k k-ch">частица</span></div>
+      <div class="ttl" style="margin-top:8px">Особняком</div>
+      <p><span class="k k-i">междометие</span> выражает чувства и побуждения: <i>ах, ой, ура, эй</i>.</p></div>
+  </div>
+  <div class="tblw"><table class="tb">
+    <tr><th>Часть речи</th><th>Что обозначает</th><th>Вопросы</th><th>Пример</th></tr>
+    <tr><td><span class="k k-s">Существительное</span></td><td>предмет</td><td>кто? что?</td><td>кот, облако, радость</td></tr>
+    <tr><td><span class="k k-a">Прилагательное</span></td><td>признак предмета</td><td>какой? чей?</td><td>рыжий, лесной, лисий</td></tr>
+    <tr><td><span class="k k-n">Числительное</span></td><td>количество, порядок при счёте</td><td>сколько? который?</td><td>пять, пятый</td></tr>
+    <tr><td><span class="k k-m">Местоимение</span></td><td>указывает, но не называет</td><td>кто? какой? сколько?</td><td>я, мой, этот</td></tr>
+    <tr><td><span class="k k-v">Глагол</span></td><td>действие или состояние</td><td>что делать? что сделать?</td><td>бежать, нарисовать</td></tr>
+    <tr><td><span class="k k-d">Наречие</span></td><td>признак действия</td><td>как? где? когда? куда? почему?</td><td>быстро, здесь, вчера</td></tr>
+  </table></div>
+
+  <div class="sec"><span class="ic ic-ex">●</span>Пример: предложение-радуга</div>
+  <div class="box example">
+    <div class="sent">
+      <span class="tk t-i"><i>межд.</i><span>Ой,</span></span><span class="tk t-d"><i>нареч.</i><span>ночью</span></span><span class="tk t-n"><i>числ.</i><span>два</span></span><span class="tk t-a"><i>прил.</i><span>рыжих</span></span><span class="tk t-s"><i>сущ.</i><span>кота</span></span><span class="tk t-d"><i>нареч.</i><span>тихо</span></span><span class="tk t-v"><i>глаг.</i><span>пробрались</span></span><span class="tk t-p"><i>предл.</i><span>на</span></span><span class="tk t-s"><i>сущ.</i><span>кухню</span></span><span class="tk t-c"><i>союз</i><span>и</span></span><span class="tk t-ch"><i>част.</i><span>даже</span></span><span class="tk t-v"><i>глаг.</i><span>съели</span></span><span class="tk t-m"><i>мест.</i><span>мою</span></span><span class="tk t-s"><i>сущ.</i><span>котлету!</span></span>
+    </div>
+    <p class="mini">Слово <b>ночью</b> само по себе похоже на существительное <i>ночь</i>. Но в предложении мы спрашиваем: коты пробрались <b>когда?</b> – ночью. Вопрос «когда?» задают к наречию. Поэтому <b>часть речи определяют только в предложении</b>.</p>
+  </div>
+
+  <div class="sec"><span class="ic ic-al">→</span>Алгоритм «Какая это часть речи?»</div>
+  <div class="box algo"><ol class="steps">
+    <li><b>Найди главное слово</b> и задай вопрос от него. <span class="ar">→</span> <i>кота (каких?) рыжих</i>.</li>
+    <li><b>Пойми значение.</b> Предмет? признак предмета? действие? признак действия? количество?</li>
+    <li><b>Попробуй изменить слово</b> по родам, числам, падежам, временам. <i>Рыжий, рыжая, рыжие – меняется.</i></li>
+    <li><b>Сверь с таблицей</b> и назови часть речи.</li>
+    <li><b>Вопрос не задаётся?</b> Это служебное слово или междометие (занятие 7).</li>
+  </ol></div>
+
+  <div class="sec"><span class="ic ic-pr">✎</span>Практика</div>
+  <div class="task" data-t="Глокая куздра">
+    <div class="tt"><span class="num">1</span><span class="q">Загадка лингвиста. Академик Л. В. Щерба придумал фразу, в которой нет ни одного настоящего слова. И всё равно понятно, кто есть кто!</span></div>
+    <p style="text-align:center;font-size:20px;font-weight:700;color:#5130d6">«Глокая куздра штеко будланула бокра и курдячит бокрёнка»</p>
+    <p class="small">Выбери часть речи и коротко напиши, по какой примете догадалась (окончание, суффикс, вопрос).</p>
+    <div class="it"><b style="width:100px">глокая</b><select data-o="pos" data-a="прилагательное"></select><input class="f l" placeholder="как догадалась"></div>
+    <div class="it"><b style="width:100px">куздра</b><select data-o="pos" data-a="существительное"></select><input class="f l" placeholder="как догадалась"></div>
+    <div class="it"><b style="width:100px">штеко</b><select data-o="pos" data-a="наречие"></select><input class="f l" placeholder="как догадалась"></div>
+    <div class="it"><b style="width:100px">будланула</b><select data-o="pos" data-a="глагол"></select><input class="f l" placeholder="как догадалась"></div>
+    <div class="it"><b style="width:100px">бокра</b><select data-o="pos" data-a="существительное"></select><input class="f l" placeholder="как догадалась"></div>
+    <div class="it"><b style="width:100px">и</b><select data-o="pos" data-a="союз"></select><input class="f l" placeholder="как догадалась"></div>
+    <div class="it"><b style="width:100px">курдячит</b><select data-o="pos" data-a="глагол"></select><input class="f l" placeholder="как догадалась"></div>
+    <div class="it"><b style="width:100px">бокрёнка</b><select data-o="pos" data-a="существительное"></select><input class="f l" placeholder="как догадалась"></div>
+    <p class="small" style="margin-top:8px">Бонус: придумай свою фразу из несуществующих слов.</p>
+    <textarea placeholder="Моя фраза…"></textarea>
+  </div>
+
+  <div class="task" data-t="Корзины частей речи">
+    <div class="tt"><span class="num">2</span><span class="q">Определи часть речи каждого слова. В каждую «корзину» попадёт ровно два слова.</span></div>
+    <div class="words">
+      <span class="wsel">дракон <select data-o="pos" data-a="существительное"></select></span>
+      <span class="wsel">изумрудный <select data-o="pos" data-a="прилагательное"></select></span>
+      <span class="wsel">трое <select data-o="pos" data-a="числительное"></select></span>
+      <span class="wsel">мы <select data-o="pos" data-a="местоимение"></select></span>
+      <span class="wsel">летать <select data-o="pos" data-a="глагол"></select></span>
+      <span class="wsel">высоко <select data-o="pos" data-a="наречие"></select></span>
+      <span class="wsel">над <select data-o="pos" data-a="предлог"></select></span>
+      <span class="wsel">и <select data-o="pos" data-a="союз"></select></span>
+      <span class="wsel">бы <select data-o="pos" data-a="частица"></select></span>
+      <span class="wsel">ах <select data-o="pos" data-a="междометие"></select></span>
+      <span class="wsel">шоколадный <select data-o="pos" data-a="прилагательное"></select></span>
+      <span class="wsel">сто <select data-o="pos" data-a="числительное"></select></span>
+      <span class="wsel">свой <select data-o="pos" data-a="местоимение"></select></span>
+      <span class="wsel">завтра <select data-o="pos" data-a="наречие"></select></span>
+      <span class="wsel">рисовать <select data-o="pos" data-a="глагол"></select></span>
+      <span class="wsel">через <select data-o="pos" data-a="предлог"></select></span>
+      <span class="wsel">зато <select data-o="pos" data-a="союз"></select></span>
+      <span class="wsel">ли <select data-o="pos" data-a="частица"></select></span>
+      <span class="wsel">ой <select data-o="pos" data-a="междометие"></select></span>
+      <span class="wsel">улитка <select data-o="pos" data-a="существительное"></select></span>
+    </div>
+  </div>
+
+  <div class="task" data-t="Четвёртый лишний">
+    <div class="tt"><span class="num">3</span><span class="q">Четвёртый лишний. Выбери слово другой части речи и назови её.</span></div>
+    <div class="it">а) мечтать, плавать, полёт, рисовать → <select data-o="мечтать|плавать|полёт|рисовать" data-a="полёт"></select><select data-o="pos" data-a="существительное"></select></div>
+    <div class="it">б) вчера, вперёд, весело, весёлый → <select data-o="вчера|вперёд|весело|весёлый" data-a="весёлый"></select><select data-o="pos" data-a="прилагательное"></select></div>
+    <div class="it">в) на, под, из, но → <select data-o="на|под|из|но" data-a="но"></select><select data-o="pos" data-a="союз"></select></div>
+    <div class="it">г) пять, сто, пятёрка, девять → <select data-o="пять|сто|пятёрка|девять" data-a="пятёрка"></select><select data-o="pos" data-a="существительное"></select></div>
+    <div class="it">д) зелёный, лесной, зеленеть, деревянный → <select data-o="зелёный|лесной|зеленеть|деревянный" data-a="зеленеть"></select><select data-o="pos" data-a="глагол"></select></div>
+    <div class="it">е) я, мы, ты, ура → <select data-o="я|мы|ты|ура" data-a="ура"></select><select data-o="pos" data-a="междометие"></select></div>
+    <p class="small" style="margin-top:8px">Почему «пятёрка» не числительное, хотя в нём спрятано число?</p>
+    <textarea placeholder="Моё объяснение…"></textarea>
+  </div>
+</section>
+
+<!-- ===================== ЗАНЯТИЕ 2 ===================== -->
+<section class="lesson" data-id="l2" data-title="2. Существительное" data-color="#7c5cff" data-sub="предмет, род, склонение, падеж">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Занятие 2</span><h1>Имя существительное</h1>
+    <div class="sub">Самая большая часть речи. Учимся видеть «предмет» даже там, где его нельзя потрогать.</div></div>
+
+  <div class="sec"><span class="ic ic-th">i</span>Теория</div>
+  <div class="box theory"><div class="ttl">Значение и вопросы</div>
+    <p>Существительное обозначает <b>предмет</b> и отвечает на вопросы <b>кто? что?</b> «Предмет» в грамматике – это не только то, что можно потрогать (<i>кот, стол</i>), но и всё, о чём можно спросить «что?»: <i>бег, смелость, синева, вечер, мечта</i>.</p>
+    <p class="small">Проверка: если перед словом можно поставить «этот / эта / это», скорее всего, это существительное: <i>эта смелость, этот бег</i>.</p></div>
+  <div class="grid2">
+    <div class="box theory"><div class="ttl">Постоянные признаки</div><ul class="clean">
+      <li><b>собственное / нарицательное</b>: <i>Персик, Байкал</i> / <i>кот, озеро</i></li>
+      <li><b>одушевлённое / неодушевлённое</b>: кто? <i>(капибара)</i> / что? <i>(камень)</i></li>
+      <li><b>род</b>: мужской (мой), женский (моя), средний (моё); общий: <i>соня, задира</i></li>
+      <li><b>склонение</b>: 1-е, 2-е, 3-е</li></ul></div>
+    <div class="box theory"><div class="ttl">Непостоянные признаки</div><ul class="clean">
+      <li><b>число</b>: <i>кот – коты</i></li><li><b>падеж</b>: шесть падежей</li></ul>
+      <div class="ttl" style="margin-top:6px">Роль в предложении</div><p>Чаще всего <b>подлежащее</b> или <b>дополнение</b>.</p></div>
+  </div>
+  <div class="grid2">
+    <div class="tblw"><table class="tb">
+      <tr><th>Падеж</th><th>Помощник</th><th>Вопросы</th></tr>
+      <tr><td><b>И</b>менительный</td><td>есть</td><td>кто? что?</td></tr><tr><td><b>Р</b>одительный</td><td>нет</td><td>кого? чего?</td></tr>
+      <tr><td><b>Д</b>ательный</td><td>дать</td><td>кому? чему?</td></tr><tr><td><b>В</b>инительный</td><td>вижу</td><td>кого? что?</td></tr>
+      <tr><td><b>Т</b>ворительный</td><td>доволен</td><td>кем? чем?</td></tr><tr><td><b>П</b>редложный</td><td>думаю</td><td>о ком? о чём?</td></tr></table></div>
+    <div class="box warn"><div class="ttl">Запоминалка падежей</div>
+      <p style="font-size:17px"><b>И</b>ван <b>Р</b>одил <b>Д</b>евчонку, <b>В</b>елел <b>Т</b>ащить <b>П</b>елёнку.</p>
+      <div class="ttl" style="margin-top:8px">Именительный или винительный?</div>
+      <p class="mini">У неодушевлённых они совпадают: <i>(есть) мяч – (вижу) мяч</i>. Подходит «вижу» – винительный.</p></div>
+  </div>
+  <div class="tblw"><table class="tb">
+    <tr><th>Склонение</th><th>Какие слова</th><th>Примеры</th></tr>
+    <tr><td><b>1-е</b></td><td>м. и ж. род на <b>-а, -я</b></td><td>капибара, земля, папа</td></tr>
+    <tr><td><b>2-е</b></td><td>м. род с нулевым окончанием; ср. род на <b>-о, -е</b></td><td>кот, конь, облако, поле</td></tr>
+    <tr><td><b>3-е</b></td><td>ж. род на <b>-ь</b></td><td>мышь, ночь, радость</td></tr>
+    <tr><td><b>Разносклоняемые</b></td><td>10 слов на <b>-мя</b> и <b>путь</b></td><td>время, знамя, пламя, путь</td></tr>
+    <tr><td><b>Несклоняемые</b></td><td>не меняются по падежам</td><td>кофе, кенгуру, пианино</td></tr></table></div>
+
+  <div class="grid2">
+    <div class="box algo"><div class="ttl">Алгоритм «Склонение»</div><ol class="steps">
+      <li>Поставь слово в <b>начальную форму</b> (И. п., ед. ч.).</li>
+      <li>Определи <b>род</b>: «мой, моя, моё».</li>
+      <li>Посмотри на <b>окончание</b>.</li>
+      <li>Сверь с таблицей.</li></ol>
+      <p class="small">Осторожно: <i>папа, дедушка</i> мужского рода, но на -а, поэтому 1-е склонение.</p></div>
+    <div class="box example"><div class="ttl">Образец разбора</div>
+      <p><i>Капибара дружит с крокодилами.</i></p>
+      <p class="mini"><b>Капибара</b> – сущ.; предмет, кто?; н. ф. капибара; нариц., одуш., ж. р., 1-е скл.; ед. ч., И. п.; подлежащее.</p></div>
+  </div>
+
+  <div class="sec"><span class="ic ic-pr">✎</span>Практика</div>
+  <div class="task" data-t="Удивительные факты: падежи">
+    <div class="tt"><span class="num">1</span><span class="q">Удивительные факты. Нажми на все существительные в предложениях (их 14) и нажми «Проверить».</span></div>
+    <p class="pick" data-a="осьминога|сердца|кровь|мёд|банке|веками|колибри|хвостом|шерстью|медведя|кожа|бабочки|вкус|ногами">У осьминога три сердца и голубая кровь. Мёд в закрытой банке может храниться веками. Колибри умеет летать хвостом вперёд. Под белой шерстью у белого медведя скрывается чёрная кожа. Бабочки чувствуют вкус ногами.</p>
+    <div class="after">
+      <p><b>Отлично! Теперь определи падеж каждого существительного.</b></p>
+      <div class="rows2">
+        <div class="it">осьминога <select data-o="pad" data-a="родительный"></select></div>
+        <div class="it">сердца (три сердца) <select data-o="pad" data-a="родительный"></select></div>
+        <div class="it">кровь <select data-o="pad" data-a="именительный"></select></div>
+        <div class="it">мёд <select data-o="pad" data-a="именительный"></select></div>
+        <div class="it">банке <select data-o="pad" data-a="предложный"></select></div>
+        <div class="it">веками <select data-o="pad" data-a="творительный"></select></div>
+        <div class="it">колибри <select data-o="pad" data-a="именительный"></select></div>
+        <div class="it">хвостом <select data-o="pad" data-a="творительный"></select></div>
+        <div class="it">шерстью <select data-o="pad" data-a="творительный"></select></div>
+        <div class="it">медведя <select data-o="pad" data-a="родительный"></select></div>
+        <div class="it">кожа <select data-o="pad" data-a="именительный"></select></div>
+        <div class="it">бабочки <select data-o="pad" data-a="именительный"></select></div>
+        <div class="it">вкус <select data-o="pad" data-a="винительный"></select></div>
+        <div class="it">ногами <select data-o="pad" data-a="творительный"></select></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" data-t="Склонение">
+    <div class="tt"><span class="num">2</span><span class="q">Определи склонение.</span></div>
+    <div class="words">
+      <span class="wsel">мышь <select data-o="skl" data-a="3-е"></select></span><span class="wsel">дядя <select data-o="skl" data-a="1-е"></select></span>
+      <span class="wsel">облако <select data-o="skl" data-a="2-е"></select></span><span class="wsel">знамя <select data-o="skl" data-a="разносклоняемое"></select></span>
+      <span class="wsel">конь <select data-o="skl" data-a="2-е"></select></span><span class="wsel">ночь <select data-o="skl" data-a="3-е"></select></span>
+      <span class="wsel">путь <select data-o="skl" data-a="разносклоняемое"></select></span><span class="wsel">пианино <select data-o="skl" data-a="несклоняемое"></select></span>
+      <span class="wsel">Дима <select data-o="skl" data-a="1-е"></select></span><span class="wsel">кенгуру <select data-o="skl" data-a="несклоняемое"></select></span>
+      <span class="wsel">земля <select data-o="skl" data-a="1-е"></select></span><span class="wsel">поле <select data-o="skl" data-a="2-е"></select></span>
+    </div>
+  </div>
+
+  <div class="task" data-t="Несклоняемые слова">
+    <div class="tt"><span class="num">3</span><span class="q">Хитрые несклоняемые слова. Впиши окончание прилагательного. Род подскажет «мой / моя / моё».</span></div>
+    <div class="row" style="font-size:17px">
+      <span>вкусн<input class="f xs" data-a="ый"> кофе</span>
+      <span>нов<input class="f xs" data-a="ое"> метро</span>
+      <span>уютн<input class="f xs" data-a="ое"> кафе</span>
+      <span>смешн<input class="f xs" data-a="ой"> шимпанзе</span>
+      <span>жёлт<input class="f xs" data-a="ое"> такси</span>
+    </div>
+  </div>
+
+  <div class="task" data-t="Разбор существительного">
+    <div class="tt"><span class="num">4</span><span class="q">Разбери по образцу слово <u>крокодилами</u> из предложения «Капибара дружит с крокодилами».</span></div>
+    <textarea style="min-height:110px" placeholder="Крокодилами – …"></textarea>
+  </div>
+</section>
+
+<!-- ===================== ЗАНЯТИЕ 3 ===================== -->
+<section class="lesson" data-id="l3" data-title="3. Прилагательное и числительное" data-color="#ff5fa2" data-sub="признак предмета и счёт">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Занятие 3</span><h1>Прилагательное и числительное</h1>
+    <div class="sub">Одно рассказывает, какой предмет. Другое считает предметы и ставит их по порядку.</div></div>
+
+  <div class="sec"><span class="ic ic-th">i</span>Теория: прилагательное</div>
+  <div class="box theory"><p>Прилагательное обозначает <b>признак предмета</b> и отвечает на вопросы <b>какой? чей?</b> Оно повторяет за существительным род, число и падеж, как хамелеон: <i>рыжий кот, рыжая лиса, рыжее солнце, рыжие листья</i>. В предложении чаще всего <b>определение</b>, краткое – <b>сказуемое</b>.</p></div>
+  <div class="tblw"><table class="tb">
+    <tr><th>Разряд</th><th>Что обозначает</th><th>Как проверить</th><th>Примеры</th></tr>
+    <tr><td><b>Качественные</b></td><td>признак может быть больше или меньше: цвет, размер, вкус, характер</td><td>подходит «очень», «более»</td><td>тёплый, смелый</td></tr>
+    <tr><td><b>Относительные</b></td><td>материал, место, время</td><td>«очень» не подходит; можно сказать «из…», «в…»</td><td>деревянный, лесной, вчерашний</td></tr>
+    <tr><td><b>Притяжательные</b></td><td>принадлежность</td><td>вопрос <b>чей?</b></td><td>мамин, лисий</td></tr></table></div>
+  <div class="grid2">
+    <div class="box theory"><div class="ttl">Только у качественных</div><ul class="clean">
+      <li><b>Краткая форма</b>: <i>смелый – смел, смела</i></li>
+      <li><b>Сравнительная степень</b>: <i>смелее, более смелый</i></li>
+      <li><b>Превосходная</b>: <i>смелейший, самый смелый</i></li></ul></div>
+    <div class="box warn"><div class="ttl">Секрет переносного значения</div>
+      <p><i>золотое кольцо</i> (из золота, отн.) – <i>золотое сердце</i> (кач.)<br><i>железная дверь</i> (отн.) – <i>железная воля</i> (кач.)</p></div>
+  </div>
+  <div class="sec"><span class="ic ic-th">i</span>Теория: числительное</div>
+  <div class="grid2">
+    <div class="box theory"><p>Обозначает <b>количество</b> или <b>порядок при счёте</b>.</p><ul class="clean">
+      <li><b>Количественные</b> – сколько? <i>пять, трое</i></li><li><b>Порядковые</b> – который? <i>пятый</i></li></ul>
+      <p>По составу: <b>простые</b> (<i>семь</i>), <b>сложные</b> (<i>семьдесят</i>), <b>составные</b> (<i>семьдесят семь</i>).</p></div>
+    <div class="box warn"><div class="ttl">Ловушка: число есть, а числительного нет</div>
+      <p><i>пятёрка</i> – сущ. (что?)<br><i>тройной</i> – прил. (какой?)<br><i>вдвоём, трижды</i> – наречия (как?)</p></div>
+  </div>
+  <div class="sec"><span class="ic ic-ex">●</span>Пример</div>
+  <div class="box example"><div class="sent">
+    <span class="tk t-a"><i>прил. кач.</i><span>Огромный</span></span><span class="tk t-a"><i>прил. отн.</i><span>ледяной</span></span><span class="tk t-s"><i>сущ.</i><span>дракон</span></span><span class="tk t-v"><i>глаг.</i><span>охранял</span></span><span class="tk t-a"><i>прил. притяж.</i><span>бабушкин</span></span><span class="tk t-s"><i>сущ.</i><span>сундук</span></span><span class="tk t-p"><i>предл.</i><span>с</span></span><span class="tk t-n"><i>числ.</i><span>тремя</span></span><span class="tk t-s"><i>сущ.</i><span>замками.</span></span></div>
+    <p class="mini"><b>Огромный</b>: размер, «самый огромный» – качественное. <b>Ледяной</b>: из льда – относительное. <b>Бабушкин</b>: чей? – притяжательное.</p></div>
+  <div class="box algo"><div class="ttl">Алгоритм «Разряд прилагательного»</div><ol class="steps">
+    <li>Отвечает на <b>чей?</b> <span class="ar">→</span> притяжательное.</li>
+    <li>Подходит «очень» или сравнительная степень <span class="ar">→</span> качественное.</li>
+    <li>Объясняется через «из чего? где? когда?» <span class="ar">→</span> относительное.</li>
+    <li>Проверь <b>переносное значение</b>: <i>золотые руки</i> – качественное.</li></ol></div>
+
+  <div class="sec"><span class="ic ic-pr">✎</span>Практика</div>
+  <div class="task" data-t="Разряды прилагательных">
+    <div class="tt"><span class="num">1</span><span class="q">Определи разряд прилагательного.</span></div>
+    <div class="rows2">
+      <div class="it">шоколадный торт <select data-o="radj" data-a="относительное"></select></div><div class="it">сладкий торт <select data-o="radj" data-a="качественное"></select></div>
+      <div class="it">мамин торт <select data-o="radj" data-a="притяжательное"></select></div><div class="it">осенний ветер <select data-o="radj" data-a="относительное"></select></div>
+      <div class="it">холодный ветер <select data-o="radj" data-a="качественное"></select></div><div class="it">медвежья берлога <select data-o="radj" data-a="притяжательное"></select></div>
+      <div class="it">стеклянный шар <select data-o="radj" data-a="относительное"></select></div><div class="it">прозрачный шар <select data-o="radj" data-a="качественное"></select></div>
+      <div class="it">заячий след <select data-o="radj" data-a="притяжательное"></select></div><div class="it">железная дверь <select data-o="radj" data-a="относительное"></select></div>
+      <div class="it">железная воля <select data-o="radj" data-a="качественное"></select></div><div class="it">смелый поступок <select data-o="radj" data-a="качественное"></select></div>
+    </div>
+  </div>
+  <div class="task" data-t="Рекорды планеты">
+    <div class="tt"><span class="num">2</span><span class="q">Рекорды планеты. Впиши прилагательное в нужной степени сравнения.</span></div>
+    <div class="it">1) Гепард <input class="f" data-a="быстрее|более быстрый"> (быстрый) любого другого наземного зверя.</div>
+    <div class="it">2) Синий кит <input class="f" data-a="тяжелее|более тяжёлый"> (тяжёлый) любого слона.</div>
+    <div class="it">3) Эверест <input class="f" data-a="выше|более высокий"> (высокий) всех гор на Земле.</div>
+    <div class="it">4) Капибара – <input class="f" data-a="самый крупный|крупнейший"> (крупный) грызун на планете.</div>
+    <div class="it">5) Байкал – <input class="f" data-a="самое глубокое|глубочайшее"> (глубокий) озеро в мире.</div>
+  </div>
+  <div class="task" data-t="Числительные">
+    <div class="tt"><span class="num">3</span><span class="q">Впиши числительное из предложения и определи разряд и состав.</span></div>
+    <div class="it">1) Шахматная доска состоит из шестидесяти четырёх клеток. <input class="f" data-a="шестидесяти четырёх"><select data-o="nr" data-a="количественное"></select><select data-o="ns" data-a="составное"></select></div>
+    <div class="it">2) Юрий Гагарин полетел в космос двенадцатого апреля. <input class="f" data-a="двенадцатого"><select data-o="nr" data-a="порядковое"></select><select data-o="ns" data-a="простое"></select></div>
+    <div class="it">3) У паука восемь ног. <input class="f" data-a="восемь"><select data-o="nr" data-a="количественное"></select><select data-o="ns" data-a="простое"></select></div>
+    <div class="it">4) Наш кот однажды съел двести граммов сыра. <input class="f" data-a="двести"><select data-o="nr" data-a="количественное"></select><select data-o="ns" data-a="сложное"></select></div>
+    <div class="it">5) Сорок пятый автобус опять опоздал. <input class="f" data-a="сорок пятый"><select data-o="nr" data-a="порядковое"></select><select data-o="ns" data-a="составное"></select></div>
+  </div>
+  <div class="task" data-t="Не числительное!">
+    <div class="tt"><span class="num">4</span><span class="q">Числительное или нет? Определи часть речи каждого слова.</span></div>
+    <div class="words">
+      <span class="wsel">семь <select data-o="pos" data-a="числительное"></select></span><span class="wsel">седьмой <select data-o="pos" data-a="числительное"></select></span>
+      <span class="wsel">семёрка <select data-o="pos" data-a="существительное"></select></span><span class="wsel">семеро <select data-o="pos" data-a="числительное"></select></span>
+      <span class="wsel">всемером <select data-o="pos" data-a="наречие"></select></span><span class="wsel">семикратный <select data-o="pos" data-a="прилагательное"></select></span>
+      <span class="wsel">семьдесят <select data-o="pos" data-a="числительное"></select></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ЗАНЯТИЕ 4 ===================== -->
+<section class="lesson" data-id="l4" data-title="4. Местоимение" data-color="#2ec4b6" data-sub="слова-заместители и их разряды">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Занятие 4</span><h1>Местоимение</h1>
+    <div class="sub">Слова-заместители. Они ничего не называют, а только указывают.</div></div>
+  <div class="sec"><span class="ic ic-th">i</span>Теория</div>
+  <div class="box theory"><p>Местоимение <b>указывает</b> на предмет, признак или количество, но <b>не называет</b> их: <i>Капибара спит. → <b>Она</b> спит.</i> Поэтому оно отвечает на вопросы той части речи, которую заменяет: <b>кто? что? какой? чей? сколько?</b></p></div>
+  <div class="tblw"><table class="tb">
+    <tr><th>Разряд</th><th>Зачем нужен</th><th>Слова</th></tr>
+    <tr><td><b>Личные</b></td><td>участники разговора</td><td>я, ты, он, она, оно, мы, вы, они</td></tr>
+    <tr><td><b>Возвратное</b></td><td>действие на себя</td><td>себя</td></tr>
+    <tr><td><b>Притяжательные</b></td><td>чей предмет</td><td>мой, твой, свой, наш, ваш</td></tr>
+    <tr><td><b>Указательные</b></td><td>указывают пальцем</td><td>этот, тот, такой, таков, столько</td></tr>
+    <tr><td><b>Определительные</b></td><td>все, каждый, сам</td><td>весь, всякий, каждый, сам, самый, любой, иной, другой</td></tr>
+    <tr><td><b>Вопросительные</b></td><td>задают вопрос</td><td>кто? что? какой? чей? который? сколько?</td></tr>
+    <tr><td><b>Относительные</b></td><td>те же слова связывают части сложного предложения</td><td>Я знаю, <b>кто</b> это сделал.</td></tr>
+    <tr><td><b>Отрицательные</b></td><td>ни-, не-</td><td>никто, ничто, некого, нечего, никакой, ничей</td></tr>
+    <tr><td><b>Неопределённые</b></td><td>«не знаю кто»</td><td>некто, нечто, кто-то, что-нибудь, кое-кто, несколько</td></tr></table></div>
+  <div class="grid2">
+    <div class="box example"><div class="ttl">Пример</div><div class="sent">
+      <span class="tk t-m"><i>неопр.</i><span>Кто-то</span></span><span class="tk t-x"><i>&nbsp;</i><span>съел</span></span><span class="tk t-m"><i>притяж.</i><span>мою</span></span><span class="tk t-x"><i>&nbsp;</i><span>пиццу,</span></span><span class="tk t-x"><i>&nbsp;</i><span>а</span></span><span class="tk t-m"><i>отриц.</i><span>никто</span></span><span class="tk t-x"><i>&nbsp;</i><span>в</span></span><span class="tk t-m"><i>указ.</i><span>этом</span></span><span class="tk t-x"><i>&nbsp;</i><span>доме</span></span><span class="tk t-x"><i>&nbsp;</i><span>не</span></span><span class="tk t-x"><i>&nbsp;</i><span>признаётся</span></span><span class="tk t-m"><i>опред.</i><span>сам!</span></span></div></div>
+    <div class="box warn"><div class="ttl">Ловушка: его, её, их</div>
+      <p><i>Я встретила <b>его</b>.</i> – кого? → <b>личное</b>.</p><p><i><b>Его</b> рюкзак открыт.</i> – чей? → <b>притяжательное</b>.</p></div>
+  </div>
+  <div class="box algo"><div class="ttl">Алгоритм «Разряд местоимения»</div><ol class="steps">
+    <li>Убедись, что слово <b>указывает, а не называет</b>.</li>
+    <li><b>ни-, не-</b> <span class="ar">→</span> отрицательное; <b>-то, -нибудь, кое-</b> <span class="ar">→</span> неопределённое.</li>
+    <li><b>чей?</b> <span class="ar">→</span> притяжательное; знак «?» <span class="ar">→</span> вопросительное; связывает части предложения <span class="ar">→</span> относительное.</li>
+    <li>Остальные узнаём по таблице: эти списки короткие, их стоит выучить.</li></ol></div>
+
+  <div class="sec"><span class="ic ic-pr">✎</span>Практика</div>
+  <div class="task" data-t="Дело о пропавшей пицце">
+    <div class="tt"><span class="num">1</span><span class="q">Дело о пропавшей пицце. Нажми на все местоимения (их 16) и нажми «Проверить».</span></div>
+    <p class="pick" data-a="кто-то|мою|я|ничего|наш|сам|себя|какой-то|другой|ты|сама|её|никакой|чья|твоей">– Кто-то съел мою пиццу! – возмутилась Лиза.<br>– Я ничего не трогал, – сказал брат. – Спроси у кота.<br>– Наш кот сам себя не помнит после обеда. Тут постарался какой-то другой обжора.<br>– Может, ты сама съела её ночью?<br>– Никакой пиццы я не видела! Чья коробка лежит под твоей кроватью?</p>
+    <div class="after"><p><b>Все найдены! Теперь определи разряд каждого.</b></p>
+      <div class="rows2">
+        <div class="it">Кто-то <select data-o="mest" data-a="неопределённое"></select></div><div class="it">мою <select data-o="mest" data-a="притяжательное"></select></div>
+        <div class="it">Я <select data-o="mest" data-a="личное"></select></div><div class="it">ничего <select data-o="mest" data-a="отрицательное"></select></div>
+        <div class="it">Наш <select data-o="mest" data-a="притяжательное"></select></div><div class="it">сам <select data-o="mest" data-a="определительное"></select></div>
+        <div class="it">себя <select data-o="mest" data-a="возвратное"></select></div><div class="it">какой-то <select data-o="mest" data-a="неопределённое"></select></div>
+        <div class="it">другой <select data-o="mest" data-a="определительное"></select></div><div class="it">ты <select data-o="mest" data-a="личное"></select></div>
+        <div class="it">сама <select data-o="mest" data-a="определительное"></select></div><div class="it">её <select data-o="mest" data-a="личное"></select></div>
+        <div class="it">Никакой <select data-o="mest" data-a="отрицательное"></select></div><div class="it">я <select data-o="mest" data-a="личное"></select></div>
+        <div class="it">Чья <select data-o="mest" data-a="вопросительное"></select></div><div class="it">твоей <select data-o="mest" data-a="притяжательное"></select></div>
+      </div></div>
+  </div>
+  <div class="task" data-t="Его, её, их">
+    <div class="tt"><span class="num">2</span><span class="q">Личное или притяжательное? Задай вопрос: «кого?» или «чей?».</span></div>
+    <div class="rows2">
+      <div class="it">1) Я видела <b>его</b> вчера в парке. <select data-o="личное|притяжательное" data-a="личное"></select></div>
+      <div class="it">2) <b>Его</b> самокат стоял у подъезда. <select data-o="личное|притяжательное" data-a="притяжательное"></select></div>
+      <div class="it">3) <b>Её</b> кот спит в шапке. <select data-o="личное|притяжательное" data-a="притяжательное"></select></div>
+      <div class="it">4) Мы позвали <b>её</b> на праздник. <select data-o="личное|притяжательное" data-a="личное"></select></div>
+      <div class="it">5) <b>Их</b> попугай знает сорок слов. <select data-o="личное|притяжательное" data-a="притяжательное"></select></div>
+      <div class="it">6) Я узнала <b>их</b> по смеху. <select data-o="личное|притяжательное" data-a="личное"></select></div>
+    </div>
+  </div>
+  <div class="task" data-t="Вопросительное или относительное">
+    <div class="tt"><span class="num">3</span><span class="q">Вопросительное или относительное?</span></div>
+    <div class="rows2">
+      <div class="it">1) <b>Кто</b> разбил вазу? <select data-o="вопросительное|относительное" data-a="вопросительное"></select></div>
+      <div class="it">2) Я знаю, <b>кто</b> разбил вазу. <select data-o="вопросительное|относительное" data-a="относительное"></select></div>
+      <div class="it">3) <b>Какую</b> книгу ты читаешь? <select data-o="вопросительное|относительное" data-a="вопросительное"></select></div>
+      <div class="it">4) Мне понравилась книга, <b>которую</b> ты подарила. <select data-o="вопросительное|относительное" data-a="относительное"></select></div>
+    </div>
+  </div>
+  <div class="task" data-t="Замени повторы">
+    <div class="tt"><span class="num">4</span><span class="q">Перепиши текст, заменив повторы местоимениями.</span></div>
+    <p><i>У Маши есть хомяк Пончик. Пончик очень любит семечки. Маша прячет семечки в шкаф, но Пончик всё равно находит семечки.</i></p>
+    <textarea placeholder="У Маши есть хомяк Пончик. …"></textarea>
+  </div>
+</section>
+
+<!-- ===================== ЗАНЯТИЕ 5 ===================== -->
+<section class="lesson" data-id="l5" data-title="5. Глагол и его формы" data-color="#e63946" data-sub="действие, причастие, деепричастие">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Занятие 5</span><h1>Глагол, причастие, деепричастие</h1>
+    <div class="sub">Глагол – мотор предложения. А у мотора есть две особые формы.</div></div>
+  <div class="sec"><span class="ic ic-th">i</span>Теория: глагол</div>
+  <div class="box theory"><p>Глагол обозначает <b>действие</b> или <b>состояние</b>: <b>что делать? что сделать?</b> Начальная форма – <b>инфинитив</b> на <b>-ть, -ти, -чь</b> (<i>летать, нести, беречь</i>). В предложении чаще всего <b>сказуемое</b>.</p></div>
+  <div class="grid2">
+    <div class="box theory"><div class="ttl">Постоянные признаки</div><ul class="clean">
+      <li><b>Вид</b>: несов. – что делать? (<i>решать</i>); сов. – что сделать? (<i>решить</i>)</li>
+      <li><b>Переходность</b>: переходный, если рядом сущ. в В. п. без предлога (<i>читать книгу</i>)</li>
+      <li><b>Возвратность</b>: -ся / -сь (<i>умываться</i>)</li><li><b>Спряжение</b>: I или II</li></ul></div>
+    <div class="box theory"><div class="ttl">Непостоянные признаки</div><ul class="clean">
+      <li><b>Наклонение</b>: изъявительное (<i>ест</i>), условное (<i>ел бы</i>), повелительное (<i>ешь!</i>)</li>
+      <li><b>Время</b> (в изъявительном); <b>лицо</b> (наст. и буд.)</li>
+      <li><b>Число</b>; <b>род</b> (прош., ед. ч.): <i>спал, спала</i></li></ul></div>
+  </div>
+  <div class="tblw"><table class="tb">
+    <tr><th>Спряжение</th><th>Окончания</th><th>Пример</th></tr>
+    <tr><td><b>I</b></td><td>-ешь, -ет, -ем, -ете, <b>-ут / -ют</b></td><td>читаешь, читают</td></tr>
+    <tr><td><b>II</b></td><td>-ишь, -ит, -им, -ите, <b>-ат / -ят</b></td><td>строишь, строят</td></tr></table></div>
+  <div class="box algo"><div class="ttl">Алгоритм «Спряжение»</div><ol class="steps">
+    <li>Ударное окончание (<i>летúт</i>)? <span class="ar">→</span> спряжение видно по окончанию.</li>
+    <li>Безударное? Поставь глагол в <b>инфинитив</b>: <i>клеят → клеить</i>.</li>
+    <li>На <b>-ить</b> <span class="ar">→</span> II. Кроме <b>брить, стелить</b> – они I.</li>
+    <li>Один из <b>11 глаголов-исключений</b> <span class="ar">→</span> II.</li>
+    <li>Все остальные <span class="ar">→</span> I.</li></ol></div>
+  <div class="box warn"><div class="ttl">Стишок-исключение (II спряжение)</div>
+    <p style="font-size:17px"><b>Гнать, держать, смотреть и видеть, дышать, слышать, ненавидеть, и зависеть, и вертеть, и обидеть, и терпеть.</b></p></div>
+  <div class="sec"><span class="ic ic-th">i</span>Особые формы глагола</div>
+  <div class="grid2">
+    <div class="box theory" style="border-left-color:#d65bd0;background:#fdf2fc"><div class="ttl">Причастие = глагол + прилагательное</div>
+      <p>Признак предмета по действию: <b>какой? что делающий? что сделавший?</b> <i>кот <b>мурлыкающий</b></i>.</p>
+      <p class="small">Суффиксы: -ущ-/-ющ-, -ащ-/-ящ-, -вш-, -ш-, -ем-, -им-, -енн-, -нн-, -т-</p></div>
+    <div class="box theory" style="border-left-color:#6aa6f0;background:#f1f7ff"><div class="ttl">Деепричастие = глагол + наречие</div>
+      <p>Добавочное действие: <b>что делая? что сделав?</b> <i>спал, <b>мурлыча</b></i>. Не изменяется.</p>
+      <p class="small">Суффиксы: -а/-я; -в, -вши, -ши</p></div>
+  </div>
+  <div class="box example"><div class="sent">
+    <span class="tk t-s"><i>сущ.</i><span>Кот,</span></span><span class="tk t-pr"><i>прич.</i><span>мечтающий</span></span><span class="tk t-p"><i>предл.</i><span>о</span></span><span class="tk t-s"><i>сущ.</i><span>колбасе,</span></span><span class="tk t-v"><i>глаг.</i><span>сидел</span></span><span class="tk t-p"><i>предл.</i><span>у</span></span><span class="tk t-s"><i>сущ.</i><span>холодильника,</span></span><span class="tk t-d"><i>нареч.</i><span>грустно</span></span><span class="tk t-dp"><i>дееприч.</i><span>вздыхая.</span></span></div>
+    <p class="mini"><b>Образец разбора.</b> <i>Лиса хитро <u>улыбнулась</u>.</i> Глагол; что сделала?; н. ф. <i>улыбнуться</i>; сов. вид, непереходный, возвратный, I спр.; изъяв. накл., прош. вр., ед. ч., ж. р.; сказуемое.</p></div>
+
+  <div class="sec"><span class="ic ic-pr">✎</span>Практика</div>
+  <div class="task" data-t="Вид глагола">
+    <div class="tt"><span class="num">1</span><span class="q">Определи вид глагола.</span></div>
+    <div class="words">
+      <span class="wsel">прыгнуть <select data-o="vid" data-a="совершенный"></select></span><span class="wsel">читать <select data-o="vid" data-a="несовершенный"></select></span>
+      <span class="wsel">нарисовать <select data-o="vid" data-a="совершенный"></select></span><span class="wsel">мечтать <select data-o="vid" data-a="несовершенный"></select></span>
+      <span class="wsel">съесть <select data-o="vid" data-a="совершенный"></select></span><span class="wsel">улетать <select data-o="vid" data-a="несовершенный"></select></span>
+    </div>
+  </div>
+  <div class="task" data-t="Спряжение">
+    <div class="tt"><span class="num">2</span><span class="q">Впиши пропущенную букву и укажи спряжение. Действуй по алгоритму.</span></div>
+    <div class="rows2">
+      <div class="it">1) Бабочка лет<input class="f xs" data-a="и">т над лугом. <select data-o="spr" data-a="II"></select></div>
+      <div class="it">2) Пёс гон<input class="f xs" data-a="и">т мяч по двору. <select data-o="spr" data-a="II"></select></div>
+      <div class="it">3) Кот дремл<input class="f xs" data-a="е">т на подоконнике. <select data-o="spr" data-a="I"></select></div>
+      <div class="it">4) Ты слыш<input class="f xs" data-a="и">шь, как шуршит ёжик? <select data-o="spr" data-a="II"></select></div>
+      <div class="it">5) Совы вид<input class="f xs" data-a="я">т в темноте. <select data-o="spr" data-a="II"></select></div>
+      <div class="it">6) Папа бре<input class="f xs" data-a="е">тся по утрам. <select data-o="spr" data-a="I"></select></div>
+      <div class="it">7) Дети кле<input class="f xs" data-a="я">т гирлянду. <select data-o="spr" data-a="II"></select></div>
+      <div class="it">8) Дракон дыш<input class="f xs" data-a="и">т огнём. <select data-o="spr" data-a="II"></select></div>
+      <div class="it">9) Щенок ла<input class="f xs" data-a="е">т на почтальона. <select data-o="spr" data-a="I"></select></div>
+      <div class="it">10) Ветер стел<input class="f xs" data-a="е">т туман над рекой. <select data-o="spr" data-a="I"></select></div>
+    </div>
+  </div>
+  <div class="task" data-t="Говорящий кот">
+    <div class="tt"><span class="num">3</span><span class="q">Кот научился говорить. Поставь глаголы в повелительное наклонение.</span></div>
+    <p style="line-height:2.4">«<input class="f s" data-a="дай"> (дать) мне колбасы, <input class="f s" data-a="налей"> (налить) молока, <input class="f" data-a="почеши"> (почесать) за ушком и <input class="f" data-a="не трогай"> (не трогать) мой хвост!»</p>
+    <p class="small">Условное наклонение: закончи три предложения «Если бы я умела летать, я бы…»</p>
+    <textarea placeholder="1) … 2) … 3) …"></textarea>
+  </div>
+  <div class="task" data-t="Глагол, причастие, деепричастие">
+    <div class="tt"><span class="num">4</span><span class="q">Глагол, причастие или деепричастие?</span></div>
+    <div class="words">
+      <span class="wsel">прочитал <select data-o="gpd" data-a="глагол"></select></span><span class="wsel">читающий <select data-o="gpd" data-a="причастие"></select></span>
+      <span class="wsel">читая <select data-o="gpd" data-a="деепричастие"></select></span><span class="wsel">прочитав <select data-o="gpd" data-a="деепричастие"></select></span>
+      <span class="wsel">прочитанный <select data-o="gpd" data-a="причастие"></select></span><span class="wsel">прочитает <select data-o="gpd" data-a="глагол"></select></span>
+      <span class="wsel">прочитай <select data-o="gpd" data-a="глагол"></select></span><span class="wsel">мурлыкающий <select data-o="gpd" data-a="причастие"></select></span>
+      <span class="wsel">мурлыча <select data-o="gpd" data-a="деепричастие"></select></span>
+    </div>
+  </div>
+  <div class="task" data-t="Разбор глагола">
+    <div class="tt"><span class="num">5</span><span class="q">Разбери по образцу глагол <u>нашёл</u>: «Медвежонок нашёл мёд».</span></div>
+    <textarea style="min-height:110px" placeholder="Нашёл – глагол; …"></textarea>
+  </div>
+</section>
+
+<!-- ===================== ЗАНЯТИЕ 6 ===================== -->
+<section class="lesson" data-id="l6" data-title="6. Наречие" data-color="#3a86ff" data-sub="признак действия: как? где? когда?">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Занятие 6 · главное</span><h1>Наречие</h1>
+    <div class="sub">Рассказывает, как, где, когда и почему происходит действие. И никогда не меняется.</div></div>
+  <div class="sec"><span class="ic ic-th">i</span>Теория</div>
+  <div class="box theory"><div class="ttl">Блок 1. Что такое наречие</div>
+    <p>Наречие – самостоятельная часть речи, которая обозначает <b>признак действия</b>, <b>признак другого признака</b> или (реже) <b>признак предмета</b>.</p>
+    <div class="grid3" style="margin:6px 0">
+      <div class="card"><b>признак действия</b><br><i>бежать (как?) <span class="mark">быстро</span></i></div>
+      <div class="card"><b>признак признака</b><br><i>(насколько?) <span class="mark">очень</span> смешной</i></div>
+      <div class="card"><b>признак предмета</b><br><i>яйцо (какое?) <span class="mark">всмятку</span></i></div></div>
+    <p>Название подсказывает: <b>на-речие</b> – «при глаголе», так переводится его латинское имя <i>adverbium</i>. Чаще всего наречие и правда живёт рядом с глаголом.</p></div>
+  <div class="grid2">
+    <div class="box theory"><div class="ttl">Блок 2. Вопросы</div><p style="font-size:17px"><b>как? где? когда? куда? откуда? зачем? почему? сколько? в какой степени?</b></p><p class="small">Среди них нет «какой?», «кто?», «что?».</p></div>
+    <div class="box theory"><div class="ttl">Блок 3. Главная примета: не изменяется</div><p>У наречия <b>нет окончания</b>.</p><p class="small">Прилагательное: <i>весёлый, весёлая, весёлые…</i><br>Наречие: <i>весело</i> – и всё.</p></div>
+  </div>
+  <div class="box theory"><div class="ttl">Блок 4. Роль в предложении</div><p>Обычно <b>обстоятельство</b>: <i>Совы <b>бесшумно</b> летают</i> – летают (как?) бесшумно.</p></div>
+  <div class="sec"><span class="ic ic-th">i</span>Блок 5. Разряды по значению</div>
+  <div class="tblw"><table class="tb">
+    <tr><th>Разряд</th><th>Вопросы</th><th>Примеры</th></tr>
+    <tr><td><b>Образа действия</b></td><td>как? каким образом?</td><td>громко, весело, пешком, вдвоём, шёпотом</td></tr>
+    <tr><td><b>Места</b></td><td>где? куда? откуда?</td><td>здесь, вдали, наверх, домой, издалека</td></tr>
+    <tr><td><b>Времени</b></td><td>когда? с каких пор? до каких пор?</td><td>вчера, утром, давно, зимой, допоздна</td></tr>
+    <tr><td><b>Причины</b></td><td>почему? отчего?</td><td>сгоряча, сослепу, спросонья</td></tr>
+    <tr><td><b>Цели</b></td><td>зачем? для чего?</td><td>нарочно, назло, специально</td></tr>
+    <tr><td><b>Меры и степени</b></td><td>сколько? насколько?</td><td>очень, слишком, совсем, вдвое</td></tr></table></div>
+  <div class="box warn"><div class="ttl">Блок 6. Степени сравнения</div><p>Наречия на <b>-о, -е</b> от качественных прилагательных: <i>громко</i> → <b>громче, более громко</b> → <b>громче всех</b>.</p></div>
+  <div class="sec"><span class="ic ic-th">i</span>Блок 7. Три ловушки</div>
+  <div class="box warn"><div class="ttl">Ловушка 1. Наречие или краткое прилагательное?</div><div class="grid2">
+    <p><i>Море <b>тихо</b>.</i> Море (каково?) тихо. Относится к <b>существительному</b>, меняется: <i>ночь тиха</i> → <b>краткое прилагательное</b>.</p>
+    <p><i>Море <b>тихо</b> шумело.</i> Шумело (как?) тихо. Относится к <b>глаголу</b> → <b>наречие</b>.</p></div></div>
+  <div class="box warn"><div class="ttl">Ловушка 2. Наречие или существительное?</div><div class="grid2">
+    <p><i><b>Зимой</b> медведи спят.</i> Спят (когда?) → <b>наречие</b>.</p>
+    <p><i>Мы любовались снежной <b>зимой</b>.</i> Любовались (чем?), есть прилагательное → <b>существительное</b>.</p></div></div>
+  <div class="box warn"><div class="ttl">Ловушка 3. Наречие или существительное с предлогом?</div><div class="grid2">
+    <p><i><b>Вдали</b> показался корабль.</i> Ничего не вставить → <b>наречие</b>, слитно.</p>
+    <p><i><b>В</b> синей <b>дали</b> показался корабль.</i> Вставилось слово → <b>сущ. с предлогом</b>.</p></div></div>
+  <div class="sec"><span class="ic ic-ex">●</span>Пример: кот и ваза</div>
+  <div class="box example"><div class="sent">
+    <span class="tk t-d"><i>времени</i><span>Вчера</span></span><span class="tk t-d"><i>времени</i><span>вечером</span></span><span class="tk t-x"><i>&nbsp;</i><span>кот</span></span><span class="tk t-d"><i>меры</i><span>очень</span></span><span class="tk t-d"><i>обр. д.</i><span>осторожно</span></span><span class="tk t-x"><i>&nbsp;</i><span>залез</span></span><span class="tk t-d"><i>места</i><span>наверх,</span></span><span class="tk t-d"><i>времени</i><span>долго</span></span><span class="tk t-x"><i>&nbsp;</i><span>смотрел</span></span><span class="tk t-d"><i>места</i><span>вниз,</span></span><span class="tk t-x"><i>&nbsp;</i><span>а</span></span><span class="tk t-d"><i>времени</i><span>потом</span></span><span class="tk t-d"><i>цели</i><span>нарочно</span></span><span class="tk t-x"><i>&nbsp;</i><span>столкнул</span></span><span class="tk t-x"><i>&nbsp;</i><span>вазу.</span></span></div>
+    <p class="mini">9 наречий в одном предложении! Залез (куда?) наверх, смотрел (сколько времени?) долго, столкнул (с какой целью?) нарочно.</p></div>
+  <div class="box algo"><div class="ttl">Алгоритм «Наречие ли это?»</div><ol class="steps">
+    <li>Найди слово, к которому относится наше слово. Чаще всего это <b>глагол</b>.</li>
+    <li>Задай вопрос: <b>как? где? когда? куда? откуда? зачем? почему? насколько?</b></li>
+    <li>Попробуй изменить слово. <b>Не меняется</b> <span class="ar">→</span> дальше.</li>
+    <li>Впереди «предлог»? Если между ним и словом <b>ничего не вставить</b> <span class="ar">→</span> <b>наречие</b>.</li>
+    <li>Определи разряд по вопросу.</li></ol></div>
+
+  <div class="sec"><span class="ic ic-pr">✎</span>Практика</div>
+  <div class="task" data-t="Страница из дневника">
+    <div class="tt"><span class="num">1</span><span class="q">Страница из дневника. Нажми на все наречия (их 13) и нажми «Проверить».</span></div>
+    <p class="pick" data-a="сегодня|утром|очень|рано|вдалеке|тихо|быстро|вниз|там|громко|долго|потом|нарочно">Дорогой дневник! Сегодня утром я проснулась очень рано. Вдалеке тихо шумело море. Я быстро оделась и побежала вниз, к берегу. Там чайки громко спорили из-за рыбы. Я долго смеялась, а потом нарочно бросила им кусочек хлеба.</p>
+    <div class="after"><p><b>Все наречия найдены! Впиши вопрос (от какого слова) и выбери разряд.</b></p>
+      <div class="it"><b style="width:90px">сегодня</b><input class="f l" placeholder="проснулась (когда?)"><select data-o="nar" data-a="времени"></select></div>
+      <div class="it"><b style="width:90px">утром</b><input class="f l"><select data-o="nar" data-a="времени"></select></div>
+      <div class="it"><b style="width:90px">очень</b><input class="f l"><select data-o="nar" data-a="меры и степени"></select></div>
+      <div class="it"><b style="width:90px">рано</b><input class="f l"><select data-o="nar" data-a="времени"></select></div>
+      <div class="it"><b style="width:90px">вдалеке</b><input class="f l"><select data-o="nar" data-a="места"></select></div>
+      <div class="it"><b style="width:90px">тихо</b><input class="f l"><select data-o="nar" data-a="образа действия"></select></div>
+      <div class="it"><b style="width:90px">быстро</b><input class="f l"><select data-o="nar" data-a="образа действия"></select></div>
+      <div class="it"><b style="width:90px">вниз</b><input class="f l"><select data-o="nar" data-a="места"></select></div>
+      <div class="it"><b style="width:90px">там</b><input class="f l"><select data-o="nar" data-a="места"></select></div>
+      <div class="it"><b style="width:90px">громко</b><input class="f l"><select data-o="nar" data-a="образа действия"></select></div>
+      <div class="it"><b style="width:90px">долго</b><input class="f l"><select data-o="nar" data-a="времени"></select></div>
+      <div class="it"><b style="width:90px">потом</b><input class="f l"><select data-o="nar" data-a="времени"></select></div>
+      <div class="it"><b style="width:90px">нарочно</b><input class="f l"><select data-o="nar" data-a="цели"></select></div>
+    </div>
+  </div>
+  <div class="task" data-t="Разряды наречий">
+    <div class="tt"><span class="num">2</span><span class="q">Определи разряд наречия.</span></div>
+    <div class="words">
+      <span class="wsel">завтра <select data-o="nar" data-a="времени"></select></span><span class="wsel">наверху <select data-o="nar" data-a="места"></select></span>
+      <span class="wsel">бегом <select data-o="nar" data-a="образа действия"></select></span><span class="wsel">слишком <select data-o="nar" data-a="меры и степени"></select></span>
+      <span class="wsel">сгоряча <select data-o="nar" data-a="причины"></select></span><span class="wsel">назло <select data-o="nar" data-a="цели"></select></span>
+      <span class="wsel">издалека <select data-o="nar" data-a="места"></select></span><span class="wsel">весело <select data-o="nar" data-a="образа действия"></select></span>
+      <span class="wsel">втроём <select data-o="nar" data-a="образа действия"></select></span><span class="wsel">давно <select data-o="nar" data-a="времени"></select></span>
+      <span class="wsel">нарочно <select data-o="nar" data-a="цели"></select></span><span class="wsel">совсем <select data-o="nar" data-a="меры и степени"></select></span>
+      <span class="wsel">туда <select data-o="nar" data-a="места"></select></span><span class="wsel">сослепу <select data-o="nar" data-a="причины"></select></span>
+      <span class="wsel">сегодня <select data-o="nar" data-a="времени"></select></span><span class="wsel">шёпотом <select data-o="nar" data-a="образа действия"></select></span>
+    </div>
+  </div>
+  <div class="task" data-t="Ловушка 1">
+    <div class="tt"><span class="num">3</span><span class="q">Ловушка 1. Наречие или краткое прилагательное?</span></div>
+    <div class="rows2">
+      <div class="it">Платье <b>красиво</b>. <select data-o="nk" data-a="краткое прилагательное"></select></div><div class="it">Она <b>красиво</b> танцует. <select data-o="nk" data-a="наречие"></select></div>
+      <div class="it">Озеро <b>глубоко</b>. <select data-o="nk" data-a="краткое прилагательное"></select></div><div class="it">Рыба нырнула <b>глубоко</b>. <select data-o="nk" data-a="наречие"></select></div>
+      <div class="it">Пирожное <b>сладко</b>. <select data-o="nk" data-a="краткое прилагательное"></select></div><div class="it">Котёнок <b>сладко</b> спал. <select data-o="nk" data-a="наречие"></select></div>
+      <div class="it">Небо <b>ясно</b>. <select data-o="nk" data-a="краткое прилагательное"></select></div><div class="it">Солнце <b>ясно</b> светило. <select data-o="nk" data-a="наречие"></select></div>
+    </div>
+  </div>
+  <div class="task" data-t="Ловушки 2 и 3">
+    <div class="tt"><span class="num">4</span><span class="q">Ловушки 2 и 3. Наречие или существительное?</span></div>
+    <div class="rows2">
+      <div class="it">1) <b>Утром</b> кот требует завтрак. <select data-o="nsw" data-a="наречие"></select></div>
+      <div class="it">2) Художник любовался ранним <b>утром</b>. <select data-o="nsw" data-a="существительное"></select></div>
+      <div class="it">3) <b>Наверху</b> живёт сова. <select data-o="nsw" data-a="наречие"></select></div>
+      <div class="it">4) <b>На верху</b> ёлки сияет шар. <select data-o="nsw" data-a="существительное с предлогом"></select></div>
+      <div class="it">5) Сначала подумай, <b>потом</b> говори. <select data-o="nsw" data-a="наречие"></select></div>
+      <div class="it">6) Бегемот покрылся розовым <b>потом</b>. <select data-o="nsw" data-a="существительное"></select></div>
+    </div>
+    <p class="small" style="margin-top:8px">Объясни, как ты поняла в примерах 2 и 4.</p>
+    <textarea></textarea>
+  </div>
+  <div class="task" data-t="Степени сравнения наречий">
+    <div class="tt"><span class="num">5</span><span class="q">Продолжи цепочки степеней сравнения. Образец: громко – громче – громче всех.</span></div>
+    <div class="it"><b style="width:80px">тихо</b><input class="f" data-a="тише|более тихо"><input class="f" data-a="тише всех|тише всего"></div>
+    <div class="it"><b style="width:80px">высоко</b><input class="f" data-a="выше|более высоко"><input class="f" data-a="выше всех|выше всего"></div>
+    <div class="it"><b style="width:80px">смешно</b><input class="f" data-a="смешнее|более смешно"><input class="f" data-a="смешнее всех|смешнее всего"></div>
+    <div class="it"><b style="width:80px">далеко</b><input class="f" data-a="дальше|более далеко"><input class="f" data-a="дальше всех|дальше всего"></div>
+    <div class="it"><b style="width:80px">хорошо</b><input class="f" data-a="лучше"><input class="f" data-a="лучше всех|лучше всего"></div>
+  </div>
+  <div class="task" data-t="Творческое: утро зверя">
+    <div class="tt"><span class="num">6</span><span class="q">Творческое. Опиши, как просыпается утром твой кот (собака, хомяк или выдуманный зверь). Используй не меньше 6 наречий разных разрядов и после каждого в скобках напиши разряд.</span></div>
+    <textarea style="min-height:140px" placeholder="Утром (времени) мой кот…"></textarea>
+  </div>
+</section>
+
+<!-- ===================== ЗАНЯТИЕ 7 ===================== -->
+<section class="lesson" data-id="l7" data-title="7. Служебные слова" data-color="#9aa3b5" data-sub="предлог, союз, частица, междометие">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Занятие 7</span><h1>Служебные части речи и междометие</h1>
+    <div class="sub">Маленькие слова, без которых предложение рассыпается.</div></div>
+  <div class="sec"><span class="ic ic-th">i</span>Теория</div>
+  <div class="box theory">
+    <p>Прочитай: <i>«Кот сидел … окном … смотрел … птиц, … не решался прыгнуть».</i> Фраза разваливается. С служебными словами: <i>Кот сидел <b>под</b> окном <b>и</b> смотрел <b>на</b> птиц, <b>но не</b> решался прыгнуть.</i></p>
+    <p>Служебные части речи <b>ничего не называют</b>, <b>не отвечают на вопросы</b>, <b>не бывают членами предложения</b>.</p></div>
+  <div class="grid3">
+    <div class="box theory" style="border-left-color:#9aa3b5;background:#f6f7f9"><div class="ttl">Предлог</div><p>Стоит <b>перед существительным или местоимением</b>, связывает слова.</p><p class="small"><i>в, на, под, из-за, из-под, благодаря, несмотря на</i></p><p class="small">Проверка: можно вставить слово: <i>под (старым) окном</i>.</p></div>
+    <div class="box theory" style="border-left-color:#b08968;background:#faf6f2"><div class="ttl">Союз</div><p>Связывает <b>однородные члены</b> или <b>части сложного предложения</b>.</p><p class="small"><i>и, а, но, или, зато, потому что, чтобы, если, когда</i></p><p class="small">Стоит между частями, как мост.</p></div>
+    <div class="box theory" style="border-left-color:#c9849b;background:#fbf4f6"><div class="ttl">Частица</div><p>Добавляет <b>оттенок смысла</b> или <b>образует форму</b> глагола.</p><p class="small"><i>не, ни, ли, разве, неужели, даже, только, бы, пусть, -то, -ка</i></p><p class="small">Убери – смысл останется, но оттенок изменится.</p></div>
+  </div>
+  <div class="grid2">
+    <div class="box theory" style="border-left-color:#f4c430;background:#fffbea"><div class="ttl">Междометие</div><p>Выражает <b>чувства</b> (<i>ах, ой, ура, увы</i>) или <b>побуждения</b> (<i>эй, тсс, брысь</i>). Рядом живут звукоподражания: <i>мяу, тик-так</i>.</p><p class="small">Отделяется запятой или «!»: <i>Ой, какой котёнок!</i></p></div>
+    <div class="box example"><div class="ttl">Частица меняет смысл</div><p><i><b>Даже</b> кот испугался.</i><br><i>Кот <b>даже</b> испугался.</i><br><i>Кот <b>не</b> испугался.</i><br><i><b>Неужели</b> кот испугался?</i></p></div>
+  </div>
+  <div class="box algo"><div class="ttl">Алгоритм «Какое это служебное слово?»</div><ol class="steps">
+    <li>Вопрос к слову <b>не задаётся</b> <span class="ar">→</span> служебное слово или междометие.</li>
+    <li>Выражает чувство или команду <span class="ar">→</span> <b>междометие</b>.</li>
+    <li>Стоит перед сущ. или местоимением и связывает его с другим словом <span class="ar">→</span> <b>предлог</b>.</li>
+    <li>Соединяет два члена или две части предложения <span class="ar">→</span> <b>союз</b>.</li>
+    <li>Добавляет отрицание, вопрос, усиление или образует форму (<i>бы, пусть</i>) <span class="ar">→</span> <b>частица</b>.</li></ol></div>
+
+  <div class="sec"><span class="ic ic-pr">✎</span>Практика</div>
+  <div class="task" data-t="Почини предложения">
+    <div class="tt"><span class="num">1</span><span class="q">Почини предложения: впиши подходящие служебные слова.</span></div>
+    <div class="it">1) Кот прыгнул <input class="f s"> стол, <input class="f s"> поймал муху, <input class="f s"> разбил чашку.</div>
+    <div class="it">2) Мы пошли гулять, <input class="f"> дождь уже закончился.</div>
+    <div class="it">3) <input class="f"> ты забыла взять зонт?</div>
+    <div class="it">4) Ёжик спрятался <input class="f s"> листьями <input class="f s"> заснул <input class="f s"> самой весны.</div>
+  </div>
+  <div class="task" data-t="Предлог, союз, частица">
+    <div class="tt"><span class="num">2</span><span class="q">Определи часть речи выделенного слова.</span></div>
+    <div class="rows2">
+      <div class="it">1) <b>Даже</b> дракон боится щекотки. <select data-o="sl" data-a="частица"></select></div>
+      <div class="it">2) Сова спит днём, <b>а</b> ночью охотится. <select data-o="sl" data-a="союз"></select></div>
+      <div class="it">3) <b>Из-под</b> дивана выглянул котёнок. <select data-o="sl" data-a="предлог"></select></div>
+      <div class="it">4) <b>Неужели</b> ты съел весь торт? <select data-o="sl" data-a="частица"></select></div>
+      <div class="it">5) Пойдём гулять, <b>если</b> выйдет солнце. <select data-o="sl" data-a="союз"></select></div>
+      <div class="it">6) <b>Пусть</b> музыка играет громче! <select data-o="sl" data-a="частица"></select></div>
+      <div class="it">7) <b>Благодаря</b> тебе я поняла наречия! <select data-o="sl" data-a="предлог"></select></div>
+      <div class="it">8) Выберем кино <b>или</b> каток? <select data-o="sl" data-a="союз"></select></div>
+      <div class="it">9) <b>Не</b> трогай мой бутерброд! <select data-o="sl" data-a="частица"></select></div>
+      <div class="it">10) <b>Ура</b>, каникулы! <select data-o="sl" data-a="междометие"></select></div>
+    </div>
+  </div>
+  <div class="task" data-t="Почувствуй разницу">
+    <div class="tt"><span class="num">3</span><span class="q">Добавь к предложению «Ты сделала уроки» частицу и объясни, как меняется смысл.</span></div>
+    <div class="it"><b style="width:80px">разве</b><input class="f w" style="flex:1"></div>
+    <div class="it"><b style="width:80px">даже</b><input class="f w" style="flex:1"></div>
+    <div class="it"><b style="width:80px">бы</b><input class="f w" style="flex:1"></div>
+    <div class="it"><b style="width:80px">не</b><input class="f w" style="flex:1"></div>
+  </div>
+  <div class="task" data-t="Междометия-эмоции">
+    <div class="tt"><span class="num">4</span><span class="q">Придумай реплику для каждой ситуации и начни её с междометия.</span></div>
+    <div class="it"><span style="width:250px">Тебе подарили щенка:</span><input class="f w" style="flex:1"></div>
+    <div class="it"><span style="width:250px">Кот лезет на стол:</span><input class="f w" style="flex:1"></div>
+    <div class="it"><span style="width:250px">Ты заблудилась в лесу и зовёшь друзей:</span><input class="f w" style="flex:1"></div>
+  </div>
+</section>
+
+<!-- ===================== ЗАНЯТИЕ 8 ===================== -->
+<section class="lesson" data-id="l8" data-title="8. Расследование" data-color="#f2b600" data-sub="все части речи в одном тексте">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Занятие 8 · итог</span><h1>Большое расследование</h1>
+    <div class="sub">Все части речи в одном тексте. Пора применить всё, что знаешь.</div></div>
+  <div class="sec"><span class="ic ic-al">→</span>Главный алгоритм</div>
+  <div class="box algo"><ol class="steps">
+    <li>Задай вопрос. <b>Вопроса нет?</b> <span class="ar">→</span> предлог, союз, частица или междометие.</li>
+    <li><b>кто? что?</b> <span class="ar">→</span> существительное (называет) или местоимение (указывает).</li>
+    <li><b>какой? чей?</b> <span class="ar">→</span> прилагательное, местоимение или причастие (суффиксы -ущ-, -ащ-, -вш-, -енн-).</li>
+    <li><b>сколько? который?</b> <span class="ar">→</span> числительное.</li>
+    <li><b>что делать? что сделать?</b> <span class="ar">→</span> глагол; <b>что делая? что сделав?</b> <span class="ar">→</span> деепричастие.</li>
+    <li><b>как? где? когда? куда? зачем? почему?</b> + не меняется <span class="ar">→</span> наречие.</li></ol></div>
+  <div class="sec"><span class="ic ic-pr">✎</span>Практика</div>
+  <div class="task" data-t="Дело о трёх носках">
+    <div class="tt"><span class="num">1</span><span class="q">Дело о трёх носках. Под каждым словом выбери номер его части речи.</span></div>
+    <div class="legend" style="margin-bottom:10px">
+      <span class="k k-s">1 сущ.</span><span class="k k-a">2 прил.</span><span class="k k-n">3 числ.</span><span class="k k-m">4 мест.</span><span class="k k-v">5 глаг.</span><span class="k k-pr">6 прич.</span>
+      <span class="k k-dp">7 дееприч.</span><span class="k k-d">8 нареч.</span><span class="k k-p">9 предл.</span><span class="k k-c">10 союз</span><span class="k k-ch">11 част.</span><span class="k k-i">12 межд.</span></div>
+    <p class="codes" data-a="12 8 8 4 2 1 1 5 9 1 3 2 1 4 8 5 4 9 1 6 1 10 8 7 8 5 9 1 1 8 5 4 5 4 1 10 1 11 8 5">Ух&nbsp;ты! Вчера утром наш рыжий кот Персик нашёл под диваном три старых носка. Он гордо притащил их на кухню, залитую солнцем, и, довольно урча, аккуратно сложил возле миски. Мама строго спросила: «Кто устроил этот склад?» Но Персик только невинно моргнул.</p>
+  </div>
+  <div class="task" data-t="Вопросы следователя">
+    <div class="tt"><span class="num">2</span><span class="q">Вопросы следователя по этому же тексту.</span></div>
+    <p>а) Выпиши все наречия и определи их разряд. Что значит здесь слово <i>довольно</i>?</p><textarea></textarea>
+    <p style="margin-top:8px">б) Найди причастие и деепричастие. От каких глаголов они образованы?</p><textarea></textarea>
+    <p style="margin-top:8px">в) Какие слова в тексте служебные? Почему к ним нельзя задать вопрос?</p><textarea></textarea>
+  </div>
+  <div class="task" data-t="Морфологический разбор">
+    <div class="tt"><span class="num">3</span><span class="q">Разбери по образцам прилагательное <u>рыжий</u> и глагол <u>притащил</u>.</span></div>
+    <p class="small">План разбора прилагательного: значение и вопрос → начальная форма → постоянные признаки (разряд; полная или краткая форма) → непостоянные (степень сравнения, род, число, падеж) → роль.</p>
+    <textarea style="min-height:90px" placeholder="Рыжий – …"></textarea>
+    <textarea style="min-height:90px;margin-top:8px" placeholder="Притащил – …"></textarea>
+  </div>
+  <div class="task" data-t="Предложение-радуга">
+    <div class="tt"><span class="num">4</span><span class="q">Собери своё предложение-радугу: не меньше 8 разных частей речи. После каждого слова в скобках подпиши часть речи.</span></div>
+    <textarea style="min-height:100px"></textarea>
+  </div>
+  <div class="task" data-t="Я умею">
+    <div class="tt"><span class="num">5</span><span class="q">Я умею. Отметь то, в чём уверена. Если нет – вернись к занятию в скобках.</span></div>
+    <div class="grid2">
+      <div>
+        <label class="check"><input type="checkbox">отличаю самостоятельные части речи от служебных (1)</label>
+        <label class="check"><input type="checkbox">определяю склонение и падеж (2)</label>
+        <label class="check"><input type="checkbox">нахожу разряд прилагательного (3)</label>
+        <label class="check"><input type="checkbox">не путаю числительное с «пятёркой» и «вдвоём» (3)</label>
+        <label class="check"><input type="checkbox">знаю разряды местоимений (4)</label>
+      </div><div>
+        <label class="check"><input type="checkbox">определяю спряжение по алгоритму (5)</label>
+        <label class="check"><input type="checkbox">отличаю глагол, причастие, деепричастие (5)</label>
+        <label class="check"><input type="checkbox">узнаю наречие и его разряд (6)</label>
+        <label class="check"><input type="checkbox">не попадаю в три ловушки наречия (6)</label>
+        <label class="check"><input type="checkbox">различаю предлог, союз, частицу (7)</label>
+      </div></div>
+  </div>
+</section>
+
+<!-- ===================== ШПАРГАЛКА ===================== -->
+<section class="lesson" data-id="cheat" data-title="Шпаргалка">
+  <div class="banner"><div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+    <span class="tag">Шпаргалка</span><h1>Все части речи на одной странице</h1></div>
+  <div class="tblw"><table class="tb">
+    <tr><th>Часть речи</th><th>Значение</th><th>Вопросы</th><th>Изменяется?</th><th>Роль</th><th>Пример</th></tr>
+    <tr><td><span class="k k-s">Существ.</span></td><td>предмет</td><td>кто? что?</td><td>по числам и падежам</td><td>подл., доп.</td><td>капибара</td></tr>
+    <tr><td><span class="k k-a">Прилаг.</span></td><td>признак предмета</td><td>какой? чей?</td><td>по родам, числам, падежам</td><td>опр., сказ.</td><td>ледяной</td></tr>
+    <tr><td><span class="k k-n">Числит.</span></td><td>количество, порядок</td><td>сколько? который?</td><td>по падежам</td><td>любая</td><td>три, третий</td></tr>
+    <tr><td><span class="k k-m">Местоим.</span></td><td>указывает, не называя</td><td>кто? какой? сколько?</td><td>большинство – да</td><td>любая</td><td>я, мой, никто</td></tr>
+    <tr><td><span class="k k-v">Глагол</span></td><td>действие, состояние</td><td>что делать? что сделать?</td><td>наклонения, времена, лица, числа, роды</td><td>сказ.</td><td>мечтать</td></tr>
+    <tr><td><span class="k k-pr">Причастие</span></td><td>признак по действию</td><td>какой? что делающий?</td><td>как прилагательное</td><td>опр.</td><td>летящий</td></tr>
+    <tr><td><span class="k k-dp">Дееприч.</span></td><td>добавочное действие</td><td>что делая? что сделав?</td><td>нет</td><td>обст.</td><td>мурлыча</td></tr>
+    <tr><td><span class="k k-d">Наречие</span></td><td>признак действия</td><td>как? где? когда? зачем?</td><td>нет</td><td>обст.</td><td>вдали, нарочно</td></tr>
+    <tr><td><span class="k k-p">Предлог</span></td><td>связь слов</td><td>–</td><td>нет</td><td>–</td><td>под, из-за</td></tr>
+    <tr><td><span class="k k-c">Союз</span></td><td>связь членов и частей</td><td>–</td><td>нет</td><td>–</td><td>и, но, если</td></tr>
+    <tr><td><span class="k k-ch">Частица</span></td><td>оттенок смысла</td><td>–</td><td>нет</td><td>–</td><td>не, даже, ли</td></tr>
+    <tr><td><span class="k k-i">Междом.</span></td><td>чувства, побуждения</td><td>–</td><td>нет</td><td>–</td><td>ура, эй</td></tr></table></div>
+  <div class="grid3">
+    <div class="box warn"><div class="ttl">Падежи</div><p class="mini">И. есть · Р. нет · Д. дать · В. вижу · Т. доволен · П. думаю</p><p class="mini"><b>И</b>ван <b>Р</b>одил <b>Д</b>евчонку, <b>В</b>елел <b>Т</b>ащить <b>П</b>елёнку</p></div>
+    <div class="box warn"><div class="ttl">Спряжение</div><p class="mini">-ить → II (кроме брить, стелить). Гнать, держать, смотреть и видеть, дышать, слышать, ненавидеть, и зависеть, и вертеть, и обидеть, и терпеть → II. Остальные → I.</p></div>
+    <div class="box warn"><div class="ttl">Наречие: ловушки</div><p class="mini">Относится к сущ. → кр. прил. (море тихо).<br>Есть падежный вопрос → сущ. (любовались зимой).<br>Вставляется слово → сущ. с предлогом (в синей дали).</p></div>
+  </div>
+</section>
+
+<!-- ===================== КЛЮЧИ (только учитель) ===================== -->
+<section class="lesson" data-id="keys" data-title="Ключи" data-teacher="1">
+  <div class="banner" style="background:linear-gradient(118deg,#3d2a8a,#6a3df0 60%,#b04cf0)"><div class="c c1"></div><div class="c c3"></div>
+    <span class="tag">Для учителя</span><h1>Ключи к письменным заданиям</h1>
+    <div class="sub">Задания с выбором проверяются автоматически. Здесь – ориентиры для того, что ученица пишет сама.</div></div>
+  <div class="keys">
+    <div class="kb"><b class="h">Занятие 1</b><b>1.</b> глокая – окончание -ая, как «красная»; куздра – окончание -а, кто?; штеко – не изменяется, -о, как «ловко»; будланула – -ну-, -л-, как «толкнула»; бокра – кого?; курдячит – -ит, что делает?; бокрёнка – суффикс -ёнок, как «котёнка».<br><b>3.</b> «Пятёрка» отвечает на вопрос «что?», обозначает предмет (оценку, купюру), а не число при счёте.</div>
+    <div class="kb"><b class="h">Занятие 2</b><b>4.</b> Крокодилами – сущ.; кем? предмет; н. ф. крокодил; нариц., одуш., м. р., 2-е скл.; мн. ч., Т. п.; дополнение.</div>
+    <div class="kb"><b class="h">Занятие 4</b><b>4.</b> У Маши есть хомяк Пончик. Он очень любит семечки. Маша прячет их в шкаф, но Пончик всё равно их находит.</div>
+    <div class="kb"><b class="h">Занятие 5</b><b>3.</b> Условное наклонение: глагол в прошедшем времени + «бы».<br><b>5.</b> Нашёл – глагол; что сделал?; н. ф. найти; сов. вид, переходный (нашёл что? мёд), невозвратный, I спр. (найдёт); изъяв. накл., прош. вр., ед. ч., м. р.; сказуемое.</div>
+    <div class="kb"><b class="h">Занятие 6</b><b>1.</b> Вопросы: проснулась (когда?) сегодня, утром, рано; (насколько?) очень рано; шумело (где?) вдалеке, (как?) тихо; оделась (как?) быстро; побежала (куда?) вниз; спорили (где?) там, (как?) громко; смеялась (сколько времени?) долго; бросила (когда?) потом, (с какой целью?) нарочно.<br><b>4.</b> 2) есть прилагательное «ранним», вопрос «чем?»; 4) можно вставить слово: на самом верху; есть вопрос «чего?» – ёлки.<br><b>6.</b> Проверить, что наречия разных разрядов и разряды подписаны верно.</div>
+    <div class="kb"><b class="h">Занятие 7</b><b>1.</b> 1) на; и / но; но / и; 2) потому что / так как / ведь; 3) неужели / разве; 4) под; и; до.<br><b>3.</b> Разве – сомнение, удивление; даже – усиление (сделала и это); бы – желательность, условие; не – отрицание.<br><b>4.</b> Проверить междометие и запятую или «!» после него.</div>
+    <div class="kb"><b class="h">Занятие 8</b><b>2.</b> а) вчера, утром – времени; гордо, довольно, аккуратно, строго, невинно – образа действия. «Довольно» = с довольством (урча как?), а не «достаточно». б) залитую – причастие (залить), урча – деепричастие (урчать). в) под, на, возле – предлоги; и, но – союзы; только – частица; ничего не называют, только связывают или добавляют оттенок.<br><b>3.</b> Рыжий – прил.; какой?; н. ф. рыжий; кач., полная форма; м. р., ед. ч., И. п.; определение. Притащил – глагол; что сделал?; н. ф. притащить; сов. вид, переходный, невозвратный, II спр.; изъяв. накл., прош. вр., ед. ч., м. р.; сказуемое.</div>
+  </div>
+</section>
+
+<div class="pager"><button class="btn" id="prevBtn">← Назад</button><button class="btn main" id="nextBtn">Дальше →</button></div>
+</div>
+
+<dialog id="pinDlg">
+  <h3 style="margin:0 0 8px">Режим учителя</h3>
+  <p class="small">Введите код учителя, чтобы открыть ключи и загрузку ответов.</p>
+  <input class="f w" id="pinInput" type="password" placeholder="Код" style="margin:6px 0 12px">
+  <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn ghost" id="pinCancel">Отмена</button><button class="btn main" id="pinOk">Войти</button></div>
+</dialog>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========= НАСТРОЙКИ ========= */
+const TEACHER_PIN = "2026";            // код учителя: смените перед публикацией
+const STORE_KEY  = "frp-morph-7-v1";   // ключ сохранения в браузере
+
+const OPTS = {
+  pos:["существительное","прилагательное","числительное","местоимение","глагол","причастие","деепричастие","наречие","предлог","союз","частица","междометие"],
+  pad:["именительный","родительный","дательный","винительный","творительный","предложный"],
+  skl:["1-е","2-е","3-е","разносклоняемое","несклоняемое"],
+  radj:["качественное","относительное","притяжательное"],
+  nr:["количественное","порядковое"], ns:["простое","сложное","составное"],
+  mest:["личное","возвратное","притяжательное","указательное","определительное","вопросительное","относительное","отрицательное","неопределённое"],
+  vid:["совершенный","несовершенный"], spr:["I","II"], gpd:["глагол","причастие","деепричастие"],
+  nar:["образа действия","места","времени","причины","цели","меры и степени"],
+  nk:["наречие","краткое прилагательное"], nsw:["наречие","существительное","существительное с предлогом"],
+  sl:["предлог","союз","частица","междометие"]
+};
+
+/* ========= ХРАНЕНИЕ ========= */
+let S = {name:"", v:{}, picks:{}, done:{}, tries:{}};
+function load(){ try{ const r = localStorage.getItem(STORE_KEY); if(r) S = Object.assign(S, JSON.parse(r)); }catch(e){} }
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(S)); }catch(e){} }
+load();
+
+const norm = s => String(s||"").toLowerCase().replace(/ё/g,"е").replace(/[«»"“”.,!?;:()]/g," ").replace(/[–—]/g,"-").replace(/\s+/g," ").trim();
+const $ = (q,el=document)=>el.querySelector(q), $$ = (q,el=document)=>[...el.querySelectorAll(q)];
+function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("show"); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove("show"),2200); }
+
+const lessons = $$("section.lesson");
+const tasks = [];
+
+/* ========= ПОСТРОЕНИЕ ========= */
+lessons.forEach(sec=>{
+  $$(".task",sec).forEach((task,ti)=>{
+    const tid = sec.dataset.id+"-t"+(ti+1);
+    task.dataset.tid = tid; tasks.push(task);
+    task.insertAdjacentHTML("afterbegin",'<span class="badge">Выполнено</span>');
+
+    // текст с номерами частей речи
+    $$(".codes",task).forEach(p=>{
+      const ans = p.dataset.a.split(" "); const words = p.textContent.trim().split(/ +/);
+      p.innerHTML = words.map((w,i)=>`<span class="ct"><span>${w.replace(/ /g," ")}</span><select data-o="codes" data-a="${ans[i]}"></select></span>`).join(" ");
+    });
+    // текст, где нужно нажимать на слова
+    $$(".pick",task).forEach((p,pi)=>{
+      const targets = new Set(p.dataset.a.split("|").map(norm));
+      const html = p.innerHTML.split(/(<br>)/).map(chunk=>{
+        if(chunk==="<br>") return chunk;
+        return chunk.split(/(\s+)/).map(tok=>{
+          const m = tok.match(/^([«"(–—]*)([А-Яа-яЁё\-]+)([^А-Яа-яЁё]*)$/);
+          if(!m || m[2]==="-" ) return tok;
+          const t = targets.has(norm(m[2])) ? 1 : 0;
+          return `${m[1]}<span class="w" data-t="${t}">${m[2]}</span>${m[3]}`;
+        }).join("");
+      }).join("");
+      p.innerHTML = html;
+      const pk = tid+"-p"+pi; p.dataset.k = pk;
+      const sel = new Set(S.picks[pk]||[]);
+      $$(".w",p).forEach((w,wi)=>{
+        if(sel.has(wi)) w.classList.add("sel");
+        w.addEventListener("click",()=>{
+          w.classList.toggle("sel"); w.classList.remove("ok","bad");
+          S.picks[pk] = $$(".w",p).map((x,i)=>x.classList.contains("sel")?i:-1).filter(i=>i>=0); save();
+        });
+      });
+    });
+    // все поля
+    $$("select,input,textarea",task).forEach((el,ci)=>{
+      const key = tid+"-c"+ci; el.dataset.k = key;
+      if(el.tagName==="SELECT"){
+        const o = el.dataset.o; let list = o==="codes" ? Array.from({length:12},(_,i)=>String(i+1)) : (OPTS[o] || o.split("|"));
+        el.innerHTML = `<option value="">${o==="codes"?"–":"выбери…"}</option>` + list.map(x=>`<option>${x}</option>`).join("");
+      }
+      if(el.type==="checkbox"){ el.checked = !!S.v[key]; el.addEventListener("change",()=>{S.v[key]=el.checked; save(); updateProgress();}); return; }
+      if(S.v[key]!=null) el.value = S.v[key];
+      const ev = el.tagName==="SELECT" ? "change" : "input";
+      el.addEventListener(ev,()=>{ S.v[key]=el.value; el.classList.remove("ok","bad","empty"); save(); });
+    });
+    // кнопки
+    const auto = $$("select[data-a],input[data-a]",task).length + $$(".pick",task).length > 0;
+    const foot = document.createElement("div"); foot.className="foot";
+    foot.innerHTML = `<button class="btn main">${auto?"Проверить и сохранить":"Сохранить ответ"}</button><span class="res"></span>`;
+    task.appendChild(foot);
+    foot.querySelector("button").addEventListener("click",()=>checkTask(task,true));
+    if(S.done[tid]){ task.classList.add("done"); checkTask(task,false); }
+  });
+});
+
+function checkTask(task, user){
+  const tid = task.dataset.tid; let ok=0,total=0,empty=0;
+  // выбор слов
+  let pickOk = true;
+  $$(".pick",task).forEach(p=>{
+    const ws = $$(".w",p); let need=0,found=0,extra=0;
+    ws.forEach(w=>{ const t=w.dataset.t==="1", s=w.classList.contains("sel");
+      w.classList.remove("ok","bad");
+      if(t) need++;
+      if(s&&t){found++; w.classList.add("ok");} else if(s&&!t){extra++; w.classList.add("bad");}
+    });
+    total+=need; ok+=Math.max(0,found-extra);
+    if(found<need||extra>0) pickOk=false;
+    task._pickMsg = `Найдено ${found} из ${need}`+(extra?`, лишних ${extra}`:"");
+  });
+  if(user){ S.tries[tid]=(S.tries[tid]||0)+1; }
+  const after = $(".after",task);
+  if(after){
+    const opened = pickOk || (S.tries[tid]||0)>=3;
+    after.classList.toggle("show", opened);
+    let lk = $(".lock",task);
+    if(!opened){ if(!lk){ lk=document.createElement("div"); lk.className="lock"; after.before(lk);} lk.textContent="Вторая часть задания откроется, когда найдёшь все слова."; }
+    else if(lk) lk.remove();
+  }
+  // поля с ответами
+  $$("select[data-a],input[data-a]",task).forEach(el=>{
+    if(el.closest(".after") && !el.closest(".after").classList.contains("show")) return;
+    total++; el.classList.remove("ok","bad","empty");
+    const v = norm(el.value); if(!v){ empty++; if(user) el.classList.add("empty"); return; }
+    const good = el.dataset.a.split("|").map(norm).includes(v);
+    if(good){ok++; el.classList.add("ok");} else el.classList.add("bad");
+  });
+  const free = $$("textarea, input.f:not([data-a])",task).filter(e=>e.value.trim()).length;
+  const res = $(".res",task);
+  const bd = $(".badge",task); if(bd) bd.textContent = (total && ok===total) || (!total) ? "Выполнено" : "Сохранено";
+  if(total){
+    const pct = ok/total;
+    res.className = "res " + (ok===total ? "good" : "mid");
+    res.textContent = (ok===total ? "Всё верно! " : `Верно ${ok} из ${total}. `+(empty?`Не заполнено: ${empty}. `:"")+"Исправь отмеченное и проверь снова. ")
+      + (task._pickMsg && !pickOk ? "("+task._pickMsg+") " : "")
+      + (free ? "Письменные ответы сохранены – их проверит учитель." : "");
+  } else {
+    res.className="res free";
+    res.textContent = free ? "Ответ сохранён – его проверит учитель." : "Пока пусто: напиши ответ.";
+  }
+  if(user){
+    S.done[tid] = {ok,total,free,time:new Date().toISOString()};
+    task.classList.add("done"); save(); updateProgress();
+    if(total && ok===total) toast("Отлично! Задание выполнено");
+    else toast("Ответ сохранён");
+  }
+}
+
+/* ========= НАВИГАЦИЯ ========= */
+const nav = $("#nav"), route = $("#route");
+function visibleLessons(){ return lessons.filter(s=>!s.dataset.teacher || document.body.classList.contains("teacher")); }
+function buildNav(){
+  nav.innerHTML=""; route.innerHTML="";
+  visibleLessons().forEach(sec=>{
+    const b=document.createElement("button"); b.dataset.go=sec.dataset.id;
+    b.innerHTML=`<span class="d"></span>${sec.dataset.title}`; b.onclick=()=>show(sec.dataset.id); nav.appendChild(b);
+    if(sec.dataset.color){
+      const n = sec.dataset.title.split(".")[0];
+      const r=document.createElement("button");
+      r.innerHTML=`<span class="n" style="background:${sec.dataset.color}">${n}</span><span><b>${sec.dataset.title.replace(/^\d+\.\s*/,"")}</b><span class="s">${sec.dataset.sub||""}</span></span>`;
+      r.onclick=()=>show(sec.dataset.id); route.appendChild(r);
+    }
+  });
+  updateProgress();
+}
+let current = "start";
+function show(id){
+  current=id; lessons.forEach(s=>s.classList.toggle("on",s.dataset.id===id));
+  $$("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.go===id));
+  const vis = visibleLessons(), i = vis.findIndex(s=>s.dataset.id===id);
+  $("#prevBtn").style.visibility = i>0?"visible":"hidden";
+  $("#nextBtn").style.visibility = i<vis.length-1?"visible":"hidden";
+  const on = $(`#nav button[data-go="${id}"]`); if(on) on.scrollIntoView({inline:"center",block:"nearest"});
+  window.scrollTo({top:0}); try{ history.replaceState(null,"","#"+id);}catch(e){}
+}
+$("#prevBtn").onclick=()=>{const v=visibleLessons(),i=v.findIndex(s=>s.dataset.id===current); if(i>0) show(v[i-1].dataset.id);};
+$("#nextBtn").onclick=()=>{const v=visibleLessons(),i=v.findIndex(s=>s.dataset.id===current); if(i<v.length-1) show(v[i+1].dataset.id);};
+
+function updateProgress(){
+  const all = tasks.length, done = tasks.filter(t=>S.done[t.dataset.tid]).length;
+  $("#barFill").style.width = (all?done/all*100:0)+"%"; $("#progTxt").textContent = `${done} из ${all} заданий`;
+  lessons.forEach(sec=>{
+    const ts = $$(".task",sec); if(!ts.length) return;
+    const d = ts.filter(t=>S.done[t.dataset.tid]).length;
+    const dot = $(`#nav button[data-go="${sec.dataset.id}"] .d`);
+    if(dot) dot.className = "d" + (d===ts.length?" full":d?" half":"");
+  });
+}
+
+/* ========= ИМЯ ========= */
+const nameEl=$("#studentName"); nameEl.value=S.name||"";
+nameEl.addEventListener("input",()=>{S.name=nameEl.value; save();});
+
+/* ========= ЭКСПОРТ ========= */
+function labelOf(el){
+  const row = el.closest(".it,.wsel,.ct,.row,p,td") || el.parentElement;
+  const c = row.cloneNode(true); $$("select,input,textarea,.badge",c).forEach(x=>x.remove());
+  return c.textContent.replace(/\s+/g," ").trim().slice(0,90);
+}
+function buildReport(){
+  const L=[]; const d=new Date();
+  L.push("Рабочая тетрадь «Части речи», 7 класс");
+  L.push("Ученица: "+(S.name||"(имя не указано)"));
+  L.push("Дата: "+d.toLocaleString("ru-RU"));
+  const all=tasks.length, done=tasks.filter(t=>S.done[t.dataset.tid]).length;
+  L.push(`Выполнено заданий: ${done} из ${all}`); L.push("");
+  lessons.forEach(sec=>{
+    const ts=$$(".task",sec); if(!ts.length) return;
+    L.push("=== "+sec.dataset.title+" ===");
+    ts.forEach((t,i)=>{
+      const st=S.done[t.dataset.tid];
+      L.push(`Задание ${i+1}. ${t.dataset.t}`+(st? (st.total?` – верно ${st.ok} из ${st.total}`:" – сохранено") : " – не выполнено"));
+      if(!st) return;
+      $$(".pick",t).forEach(p=>{
+        const sel=$$(".w.sel",p).map(w=>w.textContent+(w.dataset.t==="1"?"":" (лишнее)"));
+        L.push("   Выбранные слова: "+(sel.join(", ")||"—"));
+      });
+      $$("select,input,textarea",t).forEach(el=>{
+        if(el.type==="checkbox"){ L.push(`   [${el.checked?"x":" "}] ${labelOf(el)}`); return; }
+        const v=(el.value||"").trim(); if(!v && !el.dataset.a) return;
+        let mark=""; if(el.dataset.a){ mark = !v?" – пусто": (el.dataset.a.split("|").map(norm).includes(norm(v))?" ✓":" ✗"); }
+        if(el.tagName==="TEXTAREA"||(!el.dataset.a)) L.push(`   ✎ ${labelOf(el)}: ${v}`);
+        else L.push(`   ${labelOf(el)} → ${v||"…"}${mark}`);
+      });
+    });
+    L.push("");
+  });
+  return L.join("\n");
+}
+function download(name,text,type){
+  const blob=new Blob([text],{type}); const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();},500);
+}
+$("#btnExport").onclick=()=>{
+  const nm=(S.name||"ученица").replace(/[^\wА-Яа-яЁё]+/g,"_"); const day=new Date().toISOString().slice(0,10);
+  const rep=buildReport();
+  download(`Части_речи_${nm}_${day}.txt`, rep, "text/plain;charset=utf-8");
+  download(`Части_речи_${nm}_${day}.json`, JSON.stringify(S), "application/json");
+  try{ navigator.clipboard && navigator.clipboard.writeText(rep).catch(()=>{}); }catch(e){}
+  toast("Файлы с ответами скачаны. Отправь их учителю");
+};
+
+/* ========= УЧИТЕЛЬ ========= */
+const dlg=$("#pinDlg");
+$("#btnTeacher").onclick=()=>{ if(document.body.classList.contains("teacher")){show("keys");return;} $("#pinInput").value=""; dlg.showModal(); $("#pinInput").focus(); };
+$("#pinCancel").onclick=()=>dlg.close();
+function tryPin(){ if($("#pinInput").value===TEACHER_PIN){ dlg.close(); document.body.classList.add("teacher"); try{sessionStorage.setItem("frp-t","1")}catch(e){} buildNav(); show("keys"); toast("Режим учителя включён"); } else toast("Неверный код"); }
+$("#pinOk").onclick=tryPin; $("#pinInput").addEventListener("keydown",e=>{if(e.key==="Enter")tryPin();});
+$("#btnTeacherOff").onclick=()=>{ document.body.classList.remove("teacher"); try{sessionStorage.removeItem("frp-t")}catch(e){} buildNav(); show("start"); };
+$("#btnImport").onclick=()=>$("#fileImport").click();
+$("#fileImport").onchange=e=>{
+  const f=e.target.files[0]; if(!f) return; const r=new FileReader();
+  r.onload=()=>{ try{ const d=JSON.parse(r.result); if(!d.v) throw 0; S=Object.assign({name:"",v:{},picks:{},done:{},tries:{}},d); save(); location.reload(); }catch(err){ toast("Это не файл ответов"); } };
+  r.readAsText(f);
+};
+$("#btnReset").onclick=()=>{ if(confirm("Удалить все ответы на этом устройстве?")){ S={name:"",v:{},picks:{},done:{},tries:{}}; save(); location.reload(); } };
+try{ if(sessionStorage.getItem("frp-t")==="1") document.body.classList.add("teacher"); }catch(e){}
+
+/* ========= СТАРТ ========= */
+buildNav();
+const startId = (location.hash||"").slice(1);
+show(visibleLessons().some(s=>s.dataset.id===startId) ? startId : "start");
+</script>
+</body>
+</html>
